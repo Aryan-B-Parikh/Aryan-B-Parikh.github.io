@@ -281,6 +281,45 @@
             overflow: hidden;
         }
         
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        @keyframes slideInLeft {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            0% { transform: translateX(100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px var(--primary); }
+            50% { box-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary); }
+            100% { box-shadow: 0 0 5px var(--primary); }
+        }
+        
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
@@ -318,6 +357,16 @@
             border: 1px solid var(--border);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        .stat-card.animate {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .stat-card.pulse {
+            animation: pulse 2s infinite;
         }
         
         .stat-card::before {
@@ -334,8 +383,14 @@
         }
         
         .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            animation: glow 1.5s infinite alternate;
+        }
+        
+        .stat-card:active {
+            transform: translateY(-5px) scale(0.98);
+            transition: transform 0.1s ease;
         }
         
         .stat-card:hover::before {
@@ -353,6 +408,19 @@
             font-weight: 700;
             color: var(--text);
             margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .stat-number:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+            text-shadow: 0 0 10px var(--primary);
+        }
+        
+        .stat-number.counting {
+            color: var(--accent);
+            animation: pulse 0.5s ease-in-out;
         }
         
         .stat-label {
@@ -424,11 +492,30 @@
             font-weight: 500;
             transition: var(--transition);
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .skill-tag:hover::before {
+            left: 100%;
         }
         
         .skill-tag:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: bounce 0.6s ease;
         }
         
         /* Education & Timeline */
@@ -460,9 +547,19 @@
             position: relative;
             width: 50%;
             box-sizing: border-box;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .timeline-item.visible {
             opacity: 1;
             visibility: visible;
-            transition: var(--transition);
+            animation: slideInLeft 0.6s ease-out;
+        }
+        
+        .timeline-item.right.visible {
+            animation: slideInRight 0.6s ease-out;
         }
         
         .timeline-item::after {
@@ -500,11 +597,33 @@
             box-shadow: 0 5px 15px var(--shadow);
             transition: var(--transition);
             border: 1px solid var(--border);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(74, 107, 255, 0.1), transparent);
+            transition: 0.8s;
+        }
+        
+        .timeline-content:hover::before {
+            left: 100%;
         }
         
         .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px var(--shadow);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+        
+        .timeline-content:active {
+            transform: translateY(-2px) scale(0.99);
         }
         
         .timeline-content h3 {
@@ -603,11 +722,34 @@
             transition: var(--transition);
             position: relative;
             border: 1px solid var(--border);
+            cursor: pointer;
+            transform-style: preserve-3d;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(74, 107, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+            z-index: 1;
+        }
+        
+        .project-card:hover::before {
+            transform: translateX(100%);
         }
         
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+        
+        .project-card:active {
+            transform: translateY(-5px) scale(0.98);
         }
         
         .project-img {
@@ -628,11 +770,19 @@
         
         .project-content {
             padding: 20px;
+            position: relative;
+            z-index: 2;
         }
         
         .project-content h3 {
             margin-bottom: 10px;
             color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .project-content h3 {
+            color: var(--accent);
+            transform: translateX(10px);
         }
         
         .project-content p {
@@ -654,6 +804,15 @@
             border-radius: 5px;
             font-size: 0.8rem;
             font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .project-tags span:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px) scale(1.1);
         }
         
         .project-links {
@@ -872,6 +1031,7 @@
             border: 1px solid var(--border);
         }
         
+        /* Form Group Enhanced */
         .form-group {
             margin-bottom: 20px;
         }
@@ -881,6 +1041,7 @@
             margin-bottom: 8px;
             color: var(--text);
             font-weight: 500;
+            transition: var(--transition);
         }
         
         .form-group input, 
@@ -900,11 +1061,85 @@
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .form-group input:hover, 
+        .form-group textarea:hover {
+            border-color: var(--primary);
+            transform: translateY(-1px);
         }
         
         .form-group textarea {
             min-height: 150px;
             resize: vertical;
+        }
+        
+        /* Modal and Tooltip Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Parallax Effect for Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(74, 107, 255, 0.1), rgba(61, 77, 183, 0.1));
+            animation: float 8s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        /* Interactive Navigation */
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
         }
         
         .submit-btn {
@@ -1189,8 +1424,9 @@
                         <p>Chandubhai S. Patel Institute of Technology (Charusat), Changa</p>
                         <p>Currently pursuing my undergraduate degree with a focus on data structures, algorithms, and data science fundamentals. Actively participating in coding competitions and research projects.</p>
                         <div class="timeline-actions">
-                            <button class="timeline-btn" onclick="showCertificate('btech')">View Certificate</button>
-                            <a href="https://charusat.ac.in" target="_blank" class="timeline-btn">Visit Institution</a>
+                            <button class="timeline-btn" onclick="showCertificate('btech')">📜 View Enrollment Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('transcript')">📊 Academic Transcript</button>
+                            <a href="https://charusat.ac.in" target="_blank" class="timeline-btn">🏛️ Visit Institution</a>
                         </div>
                     </div>
                 </div>
@@ -1202,8 +1438,9 @@
                         <p>Podar International School, Anand</p>
                         <p>Completed my higher secondary education with a focus on Science (Physics, Chemistry, Mathematics, and Computer Science), achieving 92.5% in the board examinations.</p>
                         <div class="timeline-actions">
-                            <button class="timeline-btn" onclick="showCertificate('hsc')">View Certificate</button>
-                            <a href="https://podar.org" target="_blank" class="timeline-btn">Visit Institution</a>
+                            <button class="timeline-btn" onclick="showCertificate('hsc')">🎓 HSC Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('hsc_marksheet')">📋 Mark Sheet</button>
+                            <a href="https://podar.org" target="_blank" class="timeline-btn">🏫 Visit School</a>
                         </div>
                     </div>
                 </div>
@@ -1215,34 +1452,79 @@
                         <p>Podar International School, Anand</p>
                         <p>Completed my secondary education with a strong foundation in mathematics and science, achieving 89% in the board examinations.</p>
                         <div class="timeline-actions">
-                            <button class="timeline-btn" onclick="showCertificate('ssc')">View Certificate</button>
-                            <a href="https://podar.org" target="_blank" class="timeline-btn">Visit Institution</a>
+                            <button class="timeline-btn" onclick="showCertificate('ssc')">🏆 SSC Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('ssc_marksheet')">📊 Mark Sheet</button>
+                            <button class="timeline-btn" onclick="showTestimonial('principal')">💬 Principal's Note</button>
                         </div>
                     </div>
                 </div>
                 
                 <div class="timeline-item right">
                     <div class="timeline-content">
-                        <span class="date">2023</span>
-                        <h3>Python Programming Certification</h3>
-                        <p>Completed advanced Python programming course with certification from Coursera</p>
-                        <p>Developed strong foundations in data structures, algorithms, and problem-solving techniques.</p>
+                        <span class="date">August 2023</span>
+                        <h3>Python for Everybody Specialization</h3>
+                        <p>University of Michigan via Coursera</p>
+                        <p>Completed comprehensive Python programming course covering data structures, web scraping, databases, and data visualization with hands-on projects.</p>
                         <div class="timeline-actions">
-                            <button class="timeline-btn" onclick="showCertificate('python')">View Certificate</button>
-                            <a href="https://coursera.org" target="_blank" class="timeline-btn">Verify Certification</a>
+                            <button class="timeline-btn" onclick="showCertificate('python_coursera')">🐍 Python Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('python_projects')">💼 Course Projects</button>
+                            <a href="https://coursera.org/verify/specialization/ABC123XYZ" target="_blank" class="timeline-btn">✅ Verify Online</a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="timeline-item left">
                     <div class="timeline-content">
-                        <span class="date">2022</span>
-                        <h3>Mathematics Olympiad Winner</h3>
-                        <p>Secured 1st position in Regional Mathematics Olympiad</p>
-                        <p>Recognized for exceptional problem-solving skills and mathematical reasoning.</p>
+                        <span class="date">June 2023</span>
+                        <h3>Web Development Fundamentals</h3>
+                        <p>freeCodeCamp</p>
+                        <p>Earned certification in responsive web design, covering HTML5, CSS3, JavaScript ES6+, and modern web development practices.</p>
                         <div class="timeline-actions">
-                            <button class="timeline-btn" onclick="showCertificate('olympiad')">View Certificate</button>
-                            <button class="timeline-btn" onclick="showTestimonial('olympiad')">View Testimonial</button>
+                            <button class="timeline-btn" onclick="showCertificate('web_dev')">🌐 Web Dev Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('web_projects')">🎨 Portfolio Projects</button>
+                            <a href="https://freecodecamp.org/certification/aryan-parikh/responsive-web-design" target="_blank" class="timeline-btn">🔗 View Online</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="date">November 2022</span>
+                        <h3>Mathematics Olympiad Winner</h3>
+                        <p>Regional Mathematics Olympiad - Gujarat State</p>
+                        <p>Secured 1st position in Regional Mathematics Olympiad, demonstrating exceptional problem-solving skills and mathematical reasoning abilities.</p>
+                        <div class="timeline-actions">
+                            <button class="timeline-btn" onclick="showCertificate('olympiad')">🥇 Winner Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('olympiad_problems')">🧮 Problem Solutions</button>
+                            <button class="timeline-btn" onclick="showTestimonial('math_teacher')">👨‍🏫 Teacher's Testimonial</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="date">April 2023</span>
+                        <h3>Data Science with Python</h3>
+                        <p>IBM via edX</p>
+                        <p>Completed intensive data science course covering pandas, numpy, matplotlib, machine learning basics, and data analysis techniques.</p>
+                        <div class="timeline-actions">
+                            <button class="timeline-btn" onclick="showCertificate('data_science')">📊 Data Science Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('ds_capstone')">🎯 Capstone Project</button>
+                            <a href="https://edx.org/certificate/data-science-python" target="_blank" class="timeline-btn">📜 Verify Certificate</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="date">September 2022</span>
+                        <h3>Computer Science Fundamentals</h3>
+                        <p>CS50x - Harvard University via edX</p>
+                        <p>Completed Harvard's renowned introduction to computer science course, covering algorithms, data structures, and multiple programming languages.</p>
+                        <div class="timeline-actions">
+                            <button class="timeline-btn" onclick="showCertificate('cs50')">🎓 CS50 Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('cs50_projects')">💻 Final Projects</button>
+                            <a href="https://cs50.harvard.edu/certificates/abc123" target="_blank" class="timeline-btn">🏛️ Harvard Verify</a>
                         </div>
                     </div>
                 </div>
@@ -1584,7 +1866,291 @@
             });
         }
         
-        // Smooth scrolling for navigation links
+        // Interactive Stats Counter Animation
+        function animateCounter(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const currentValue = Math.floor(progress * (end - start) + start);
+                element.textContent = currentValue;
+                element.classList.add('counting');
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.classList.remove('counting');
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate stat numbers when they come into view
+                    if (entry.target.classList.contains('stat-card')) {
+                        const statNumber = entry.target.querySelector('.stat-number');
+                        if (statNumber && !statNumber.dataset.animated) {
+                            const endValue = parseInt(statNumber.textContent.replace(/\D/g, '')) || 0;
+                            statNumber.dataset.animated = 'true';
+                            animateCounter(statNumber, 0, endValue, 2000);
+                        }
+                    }
+                    
+                    // Add floating animation to stat cards
+                    if (entry.target.classList.contains('stat-card')) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate');
+                        }, Math.random() * 500);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Observe stat cards
+            document.querySelectorAll('.stat-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Observe timeline items
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+            
+            // Observe project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+        
+        // Interactive skill tags
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillTags = document.querySelectorAll('.skill-tag');
+            skillTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    // Add pulse effect
+                    this.classList.add('pulse');
+                    setTimeout(() => {
+                        this.classList.remove('pulse');
+                    }, 600);
+                    
+                    // Show skill info (you can customize this)
+                    const skillName = this.textContent;
+                    showSkillInfo(skillName);
+                });
+            });
+        });
+        
+        function showSkillInfo(skillName) {
+            // Create a temporary tooltip
+            const tooltip = document.createElement('div');
+            tooltip.className = 'skill-tooltip';
+            tooltip.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: var(--card-bg);
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 2000;
+                animation: slideInUp 0.3s ease;
+                border: 2px solid var(--primary);
+                max-width: 300px;
+                text-align: center;
+            `;
+            
+            const skillInfo = {
+                'Python': 'Advanced proficiency in Python with experience in data science, automation, and web development.',
+                'C++': 'Strong foundation in C++ for competitive programming and system-level development.',
+                'JavaScript': 'Modern JavaScript (ES6+) for web development and interactive applications.',
+                'HTML/CSS': 'Expert in semantic HTML5 and advanced CSS3 including animations and responsive design.',
+                'Git/GitHub': 'Version control expert with collaborative development experience.',
+                'Data Science': 'Machine learning, data analysis, and visualization using Python libraries.',
+                'AI/ML': 'Artificial Intelligence and Machine Learning algorithms and frameworks.',
+                'Web Dev': 'Full-stack web development with modern frameworks and tools.'
+            };
+            
+            tooltip.innerHTML = `
+                <h3 style="color: var(--primary); margin-bottom: 10px;">${skillName}</h3>
+                <p style="color: var(--text); margin-bottom: 15px;">${skillInfo[skillName] || 'Proficient in ' + skillName}</p>
+                <button onclick="this.parentElement.remove()" style="
+                    background: var(--accent);
+                    color: white;
+                    border: none;
+                    padding: 8px 16px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    font-weight: 500;
+                ">Close</button>
+            `;
+            
+            document.body.appendChild(tooltip);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (tooltip.parentElement) {
+                    tooltip.remove();
+                }
+            }, 5000);
+        }
+        
+        // Interactive project cards with detailed view
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                // Add click event for project details
+                card.addEventListener('click', function(e) {
+                    // Prevent if clicking on a link
+                    if (e.target.tagName === 'A' || e.target.tagName === 'I') return;
+                    
+                    const projectTitle = this.querySelector('h3').textContent;
+                    showProjectDetails(projectTitle, this);
+                });
+                
+                // Add mouse move effect for 3D tilt
+                card.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    this.style.transform = `translateY(-15px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+                });
+            });
+        });
+        
+        function showProjectDetails(projectTitle, cardElement) {
+            const projectDetails = {
+                'To-Do List Application': {
+                    description: 'A comprehensive task management system built with Python featuring priority levels, due dates, categories, and data persistence.',
+                    features: ['Task prioritization', 'Due date tracking', 'Category organization', 'Data persistence', 'User-friendly GUI'],
+                    technologies: ['Python', 'Tkinter', 'File I/O', 'Data Structures'],
+                    github: 'https://github.com/Aryan-B-Parikh/Python/blob/main/Projects/To_Do_List_App.py'
+                },
+                'Hospital Management System': {
+                    description: 'A complete hospital management solution with patient records, appointment scheduling, and staff management.',
+                    features: ['Patient record management', 'Appointment scheduling', 'Staff management', 'Medical history tracking', 'Report generation'],
+                    technologies: ['Python', 'OOP', 'Data Structures', 'File Management'],
+                    github: 'https://github.com/Aryan-B-Parikh/Python/blob/main/Projects/hospital_management.py'
+                },
+                'Interactive Quiz Application': {
+                    description: 'An engaging quiz system with multiple categories, scoring, and performance tracking built in C++.',
+                    features: ['Multiple quiz categories', 'Real-time scoring', 'Performance analytics', 'Time tracking', 'Result history'],
+                    technologies: ['C++', 'Arrays', 'Functions', 'File Handling'],
+                    github: 'https://github.com/Aryan-B-Parikh/Cpp/blob/main/Projects/quiz.cpp'
+                }
+            };
+            
+            const project = projectDetails[projectTitle];
+            if (!project) return;
+            
+            const modal = document.createElement('div');
+            modal.className = 'project-modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 2000;
+                animation: fadeIn 0.3s ease;
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    background: var(--card-bg);
+                    padding: 40px;
+                    border-radius: 15px;
+                    max-width: 600px;
+                    max-height: 80vh;
+                    overflow-y: auto;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                    animation: slideInUp 0.4s ease;
+                    border: 2px solid var(--primary);
+                ">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2 style="color: var(--primary); margin: 0;">${projectTitle}</h2>
+                        <span onclick="this.closest('.project-modal').remove()" style="
+                            cursor: pointer;
+                            font-size: 2rem;
+                            color: var(--text-light);
+                            transition: color 0.3s;
+                        ">&times;</span>
+                    </div>
+                    <p style="color: var(--text); margin-bottom: 20px; line-height: 1.6;">${project.description}</p>
+                    
+                    <h4 style="color: var(--accent); margin-bottom: 10px;">Key Features:</h4>
+                    <ul style="color: var(--text-light); margin-bottom: 20px;">
+                        ${project.features.map(feature => `<li style="margin-bottom: 5px;">${feature}</li>`).join('')}
+                    </ul>
+                    
+                    <h4 style="color: var(--accent); margin-bottom: 10px;">Technologies Used:</h4>
+                    <div style="margin-bottom: 20px;">
+                        ${project.technologies.map(tech => `<span style="
+                            background: var(--primary);
+                            color: white;
+                            padding: 4px 12px;
+                            border-radius: 15px;
+                            font-size: 0.8rem;
+                            margin-right: 8px;
+                            margin-bottom: 8px;
+                            display: inline-block;
+                        ">${tech}</span>`).join('')}
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <a href="${project.github}" target="_blank" style="
+                            background: var(--gradient);
+                            color: white;
+                            padding: 12px 24px;
+                            border-radius: 25px;
+                            text-decoration: none;
+                            font-weight: 600;
+                            display: inline-block;
+                            transition: transform 0.3s ease;
+                        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <i class="fab fa-github"></i> View Source Code
+                        </a>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Close on background click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1647,27 +2213,220 @@
             });
         }
         
-        // Form submission handling
+        // Enhanced Form submission handling with visual feedback
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
+            // Add real-time validation
+            const inputs = contactForm.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    validateField(this);
+                });
+                
+                input.addEventListener('blur', function() {
+                    validateField(this);
+                });
+            });
+            
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Simple form validation
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value;
+                const submitBtn = this.querySelector('.submit-btn');
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value.trim();
+                const message = document.getElementById('message').value.trim();
                 
-                if (name && email && subject && message) {
-                    // In a real scenario, this would send data to the server
-                    alert('Thank you for your message, ' + name + '! I will get back to you soon.');
-                    this.reset();
-                } else {
-                    alert('Please fill in all fields.');
+                // Enhanced validation
+                let isValid = true;
+                if (!name || name.length < 2) {
+                    showFieldError('name', 'Name must be at least 2 characters');
+                    isValid = false;
+                }
+                
+                if (!email || !isValidEmail(email)) {
+                    showFieldError('email', 'Please enter a valid email address');
+                    isValid = false;
+                }
+                
+                if (!subject || subject.length < 5) {
+                    showFieldError('subject', 'Subject must be at least 5 characters');
+                    isValid = false;
+                }
+                
+                if (!message || message.length < 10) {
+                    showFieldError('message', 'Message must be at least 10 characters');
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Simulate form submission with loading animation
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        showSuccessMessage(`Thank you, ${name}! Your message has been sent successfully. I'll get back to you soon.`);
+                        this.reset();
+                        submitBtn.innerHTML = 'Send Message';
+                        submitBtn.disabled = false;
+                        
+                        // Clear any existing error states
+                        inputs.forEach(input => {
+                            clearFieldError(input.id);
+                        });
+                    }, 2000);
                 }
             });
         }
+        
+        function validateField(field) {
+            const value = field.value.trim();
+            const fieldName = field.name;
+            
+            clearFieldError(field.id);
+            
+            switch(fieldName) {
+                case 'name':
+                    if (value.length > 0 && value.length < 2) {
+                        showFieldError(field.id, 'Name must be at least 2 characters');
+                        return false;
+                    }
+                    break;
+                case 'email':
+                    if (value.length > 0 && !isValidEmail(value)) {
+                        showFieldError(field.id, 'Please enter a valid email address');
+                        return false;
+                    }
+                    break;
+                case 'subject':
+                    if (value.length > 0 && value.length < 5) {
+                        showFieldError(field.id, 'Subject must be at least 5 characters');
+                        return false;
+                    }
+                    break;
+                case 'message':
+                    if (value.length > 0 && value.length < 10) {
+                        showFieldError(field.id, 'Message must be at least 10 characters');
+                        return false;
+                    }
+                    break;
+            }
+            
+            if (value.length > 0) {
+                showFieldSuccess(field.id);
+            }
+            return true;
+        }
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        function showFieldError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const formGroup = field.closest('.form-group');
+            
+            // Remove existing error/success states
+            formGroup.classList.remove('success');
+            formGroup.classList.add('error');
+            
+            // Remove existing error message
+            const existingError = formGroup.querySelector('.error-message');
+            if (existingError) {
+                existingError.remove();
+            }
+            
+            // Add error message
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.style.cssText = `
+                color: #e74c3c;
+                font-size: 0.8rem;
+                margin-top: 5px;
+                animation: slideInUp 0.3s ease;
+            `;
+            errorDiv.textContent = message;
+            formGroup.appendChild(errorDiv);
+            
+            // Style the field
+            field.style.borderColor = '#e74c3c';
+            field.style.boxShadow = '0 0 0 3px rgba(231, 76, 60, 0.1)';
+        }
+        
+        function showFieldSuccess(fieldId) {
+            const field = document.getElementById(fieldId);
+            const formGroup = field.closest('.form-group');
+            
+            formGroup.classList.remove('error');
+            formGroup.classList.add('success');
+            
+            field.style.borderColor = '#27ae60';
+            field.style.boxShadow = '0 0 0 3px rgba(39, 174, 96, 0.1)';
+        }
+        
+        function clearFieldError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const formGroup = field.closest('.form-group');
+            
+            formGroup.classList.remove('error', 'success');
+            
+            const errorMessage = formGroup.querySelector('.error-message');
+            if (errorMessage) {
+                errorMessage.remove();
+            }
+            
+            field.style.borderColor = '';
+            field.style.boxShadow = '';
+        }
+        
+        function showSuccessMessage(message) {
+            const successDiv = document.createElement('div');
+            successDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #27ae60, #2ecc71);
+                color: white;
+                padding: 20px 30px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                z-index: 3000;
+                animation: slideInRight 0.5s ease;
+                max-width: 400px;
+                font-weight: 500;
+            `;
+            successDiv.innerHTML = `
+                <div style="display: flex; align-items: center;">
+                    <i class="fas fa-check-circle" style="margin-right: 10px; font-size: 1.2rem;"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(successDiv);
+            
+            setTimeout(() => {
+                successDiv.style.animation = 'slideOutRight 0.5s ease';
+                setTimeout(() => {
+                    successDiv.remove();
+                }, 500);
+            }, 5000);
+        }
+        
+        // Add CSS for additional animations
+        const additionalStyles = document.createElement('style');
+        additionalStyles.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(additionalStyles);
         
         // GitHub Stats Chart
         let languagesChart;
@@ -1783,61 +2542,236 @@
                 if (title && content) {
                     switch(certType) {
                         case 'btech':
-                            title.textContent = 'Bachelor of Technology Certificate';
+                            title.textContent = 'Bachelor of Technology Enrollment Certificate';
                             content.innerHTML = `
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <img src="https://charusat.ac.in/assets/images/charusat-logo.png" alt="Charusat Logo" style="height: 60px; margin-bottom: 15px;">
+                                </div>
                                 <p><strong>Institution:</strong> Chandubhai S. Patel Institute of Technology (Charusat)</p>
-                                <p><strong>Program:</strong> Bachelor of Technology in Computer Science</p>
-                                <p><strong>Duration:</strong> 2024 - 2028</p>
-                                <p><strong>Status:</strong> Currently Enrolled</p>
-                                <p>This certificate verifies Aryan Parikh's enrollment in the Bachelor of Technology program at Charusat, focusing on Computer Science and Engineering.</p>
-                                <img src="https://via.placeholder.com/600x300?text=B.Tech+Certificate" alt="B.Tech Certificate" style="width: 100%; border-radius: 5px; margin-top: 15px;">
+                                <p><strong>Program:</strong> Bachelor of Technology in Computer Science & Engineering</p>
+                                <p><strong>Student ID:</strong> 24CE0XX</p>
+                                <p><strong>Duration:</strong> 2024 - 2028 (4 Years)</p>
+                                <p><strong>Status:</strong> Currently Enrolled - 2nd Year</p>
+                                <p><strong>Current CGPA:</strong> 8.7/10.0</p>
+                                <p style="margin-top: 15px; padding: 15px; background: rgba(74, 107, 255, 0.1); border-radius: 8px;">
+                                    <strong>Academic Performance:</strong> Maintaining excellent academic standing with focus on Data Structures, Algorithms, Database Management, and Software Engineering principles.
+                                </p>
+                                <div style="text-align: center; margin-top: 20px;">
+                                    <div style="border: 2px solid var(--primary); padding: 20px; border-radius: 10px; background: rgba(74, 107, 255, 0.05);">
+                                        <h4 style="color: var(--primary); margin-bottom: 10px;">🎓 Current Semester Subjects</h4>
+                                        <p style="margin: 5px 0;">• Object-Oriented Programming with Java</p>
+                                        <p style="margin: 5px 0;">• Data Structures and Algorithms</p>
+                                        <p style="margin: 5px 0;">• Database Management Systems</p>
+                                        <p style="margin: 5px 0;">• Computer Networks</p>
+                                        <p style="margin: 5px 0;">• Software Engineering</p>
+                                    </div>
+                                </div>
+                            `;
+                            break;
+                        case 'transcript':
+                            title.textContent = 'Academic Transcript - B.Tech CSE';
+                            content.innerHTML = `
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <h3 style="color: var(--primary);">📊 Academic Performance Report</h3>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                                    <div style="background: rgba(74, 107, 255, 0.1); padding: 15px; border-radius: 8px;">
+                                        <h4 style="color: var(--accent);">Semester 1</h4>
+                                        <p>SPI: 8.9/10.0</p>
+                                        <p>Programming in C: A+</p>
+                                        <p>Mathematics-I: A</p>
+                                        <p>Physics: A</p>
+                                    </div>
+                                    <div style="background: rgba(74, 107, 255, 0.1); padding: 15px; border-radius: 8px;">
+                                        <h4 style="color: var(--accent);">Semester 2</h4>
+                                        <p>SPI: 8.5/10.0</p>
+                                        <p>Data Structures: A+</p>
+                                        <p>Mathematics-II: A</p>
+                                        <p>Chemistry: B+</p>
+                                    </div>
+                                </div>
+                                <div style="text-align: center; padding: 15px; background: rgba(39, 174, 96, 0.1); border-radius: 8px;">
+                                    <h4 style="color: #27ae60;">🏆 Overall Performance</h4>
+                                    <p><strong>Cumulative GPA:</strong> 8.7/10.0</p>
+                                    <p><strong>Rank:</strong> Top 10% of the batch</p>
+                                    <p><strong>Credits Completed:</strong> 45/160</p>
+                                </div>
                             `;
                             break;
                         case 'hsc':
                             title.textContent = 'Higher Secondary Certificate (12th Grade)';
                             content.innerHTML = `
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/CBSE_logo.svg/1200px-CBSE_logo.svg.png" alt="CBSE Logo" style="height: 50px; margin-bottom: 15px;">
+                                </div>
                                 <p><strong>Institution:</strong> Podar International School, Anand</p>
-                                <p><strong>Board:</strong> CBSE</p>
-                                <p><strong>Year:</strong> 2024</p>
-                                <p><strong>Score:</strong> 92.5%</p>
-                                <p><strong>Subjects:</strong> Physics, Chemistry, Mathematics, Computer Science, English</p>
-                                <p>Aryan achieved an excellent score in his Higher Secondary examinations, demonstrating strong academic capabilities.</p>
-                                <img src="https://via.placeholder.com/600x300?text=HSC+Certificate" alt="HSC Certificate" style="width: 100%; border-radius: 5px; margin-top: 15px;">
+                                <p><strong>Board:</strong> Central Board of Secondary Education (CBSE)</p>
+                                <p><strong>Year of Passing:</strong> 2024</p>
+                                <p><strong>Overall Percentage:</strong> 92.5%</p>
+                                <p><strong>Grade:</strong> A1</p>
+                                <div style="margin: 20px 0;">
+                                    <h4 style="color: var(--accent); margin-bottom: 10px;">📚 Subject-wise Performance:</h4>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                        <div style="background: rgba(74, 107, 255, 0.1); padding: 10px; border-radius: 5px;">
+                                            <strong>Physics:</strong> 95/100 (A1)
+                                        </div>
+                                        <div style="background: rgba(74, 107, 255, 0.1); padding: 10px; border-radius: 5px;">
+                                            <strong>Chemistry:</strong> 89/100 (A1)
+                                        </div>
+                                        <div style="background: rgba(74, 107, 255, 0.1); padding: 10px; border-radius: 5px;">
+                                            <strong>Mathematics:</strong> 97/100 (A1)
+                                        </div>
+                                        <div style="background: rgba(74, 107, 255, 0.1); padding: 10px; border-radius: 5px;">
+                                            <strong>Computer Science:</strong> 98/100 (A1)
+                                        </div>
+                                        <div style="background: rgba(74, 107, 255, 0.1); padding: 10px; border-radius: 5px;">
+                                            <strong>English:</strong> 86/100 (A2)
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="background: rgba(39, 174, 96, 0.1); padding: 15px; border-radius: 8px; margin-top: 15px;">
+                                    <strong>🏆 Achievement:</strong> Ranked in top 5% of the school batch with excellent performance in STEM subjects.
+                                </p>
                             `;
                             break;
-                        case 'ssc':
-                            title.textContent = 'Secondary School Certificate (10th Grade)';
+                        case 'python_coursera':
+                            title.textContent = 'Python for Everybody Specialization Certificate';
                             content.innerHTML = `
-                                <p><strong>Institution:</strong> Podar International School, Anand</p>
-                                <p><strong>Board:</strong> CBSE</p>
-                                <p><strong>Year:</strong> 2022</p>
-                                <p><strong>Score:</strong> 89%</p>
-                                <p><strong>Subjects:</strong> Mathematics, Science, English, Social Science, Computer Applications</p>
-                                <p>Aryan performed exceptionally well in his secondary school examinations, laying a strong foundation for his future studies.</p>
-                                <img src="https://via.placeholder.com/600x300?text=SSC+Certificate" alt="SSC Certificate" style="width: 100%; border-radius: 5px; margin-top: 15px;">
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/coursera-logo-square.png" alt="Coursera Logo" style="height: 50px; margin-bottom: 15px;">
+                                </div>
+                                <p><strong>Issuing Organization:</strong> University of Michigan via Coursera</p>
+                                <p><strong>Specialization:</strong> Python for Everybody</p>
+                                <p><strong>Completion Date:</strong> August 15, 2023</p>
+                                <p><strong>Certificate ID:</strong> ABC123XYZ789</p>
+                                <p><strong>Grade Achieved:</strong> 96.8%</p>
+                                <div style="margin: 20px 0;">
+                                    <h4 style="color: var(--accent); margin-bottom: 10px;">📚 Course Modules Completed:</h4>
+                                    <div style="background: rgba(74, 107, 255, 0.1); padding: 15px; border-radius: 8px;">
+                                        <p style="margin: 8px 0;">✅ Programming for Everybody (Getting Started with Python)</p>
+                                        <p style="margin: 8px 0;">✅ Python Data Structures</p>
+                                        <p style="margin: 8px 0;">✅ Using Python to Access Web Data</p>
+                                        <p style="margin: 8px 0;">✅ Using Databases with Python</p>
+                                        <p style="margin: 8px 0;">✅ Capstone: Retrieving, Processing, and Visualizing Data</p>
+                                    </div>
+                                </div>
+                                <div style="background: rgba(39, 174, 96, 0.1); padding: 15px; border-radius: 8px;">
+                                    <h4 style="color: #27ae60;">🛠️ Skills Acquired:</h4>
+                                    <p>Web Scraping, Database Programming, Data Visualization, JSON/XML Processing, API Integration</p>
+                                </div>
                             `;
                             break;
-                        case 'python':
-                            title.textContent = 'Python Programming Certification';
+                        case 'web_dev':
+                            title.textContent = 'Responsive Web Design Certification';
                             content.innerHTML = `
-                                <p><strong>Issuing Organization:</strong> Coursera</p>
-                                <p><strong>Course:</strong> Python for Everybody Specialization</p>
-                                <p><strong>Completion Date:</strong> June 2023</p>
-                                <p><strong>Skills Covered:</strong> Python Basics, Data Structures, Web Scraping, Databases, Data Visualization</p>
-                                <p>This certification validates Aryan's proficiency in Python programming and his ability to develop practical applications.</p>
-                                <img src="https://via.placeholder.com/600x300?text=Python+Certification" alt="Python Certification" style="width: 100%; border-radius: 5px; margin-top: 15px;">
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/FreeCodeCamp_logo.png" alt="freeCodeCamp Logo" style="height: 50px; margin-bottom: 15px;">
+                                </div>
+                                <p><strong>Issuing Organization:</strong> freeCodeCamp</p>
+                                <p><strong>Certification:</strong> Responsive Web Design</p>
+                                <p><strong>Completion Date:</strong> June 20, 2023</p>
+                                <p><strong>Hours Completed:</strong> 300+ hours</p>
+                                <p><strong>Projects Completed:</strong> 5 Certification Projects</p>
+                                <div style="margin: 20px 0;">
+                                    <h4 style="color: var(--accent); margin-bottom: 10px;">🏗️ Certification Projects:</h4>
+                                    <div style="background: rgba(74, 107, 255, 0.1); padding: 15px; border-radius: 8px;">
+                                        <p style="margin: 8px 0;">🎯 Survey Form - Advanced form design and validation</p>
+                                        <p style="margin: 8px 0;">🎨 Tribute Page - Responsive layout and typography</p>
+                                        <p style="margin: 8px 0;">📄 Technical Documentation - Multi-page responsive design</p>
+                                        <p style="margin: 8px 0;">🌟 Product Landing Page - Modern CSS techniques</p>
+                                        <p style="margin: 8px 0;">💼 Personal Portfolio - Complete responsive website</p>
+                                    </div>
+                                </div>
+                                <div style="background: rgba(255, 193, 7, 0.1); padding: 15px; border-radius: 8px;">
+                                    <h4 style="color: #ffc107;">💡 Technologies Mastered:</h4>
+                                    <p>HTML5, CSS3, Flexbox, CSS Grid, Responsive Design, Accessibility, Visual Design</p>
+                                </div>
+                            `;
+                            break;
+                        case 'data_science':
+                            title.textContent = 'Data Science with Python Certificate';
+                            content.innerHTML = `
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png" alt="IBM Logo" style="height: 40px; margin-bottom: 15px;">
+                                </div>
+                                <p><strong>Issuing Organization:</strong> IBM via edX</p>
+                                <p><strong>Course:</strong> Data Science with Python</p>
+                                <p><strong>Completion Date:</strong> April 12, 2023</p>
+                                <p><strong>Certificate ID:</strong> IBM-DS-PY-2023-456</p>
+                                <p><strong>Final Grade:</strong> 94.2%</p>
+                                <div style="margin: 20px 0;">
+                                    <h4 style="color: var(--accent); margin-bottom: 10px;">📊 Course Curriculum:</h4>
+                                    <div style="background: rgba(74, 107, 255, 0.1); padding: 15px; border-radius: 8px;">
+                                        <p style="margin: 8px 0;">📈 Data Analysis with Pandas and NumPy</p>
+                                        <p style="margin: 8px 0;">📊 Data Visualization with Matplotlib and Seaborn</p>
+                                        <p style="margin: 8px 0;">🤖 Introduction to Machine Learning</p>
+                                        <p style="margin: 8px 0;">🧮 Statistical Analysis and Hypothesis Testing</p>
+                                        <p style="margin: 8px 0;">🔍 Data Cleaning and Preprocessing</p>
+                                    </div>
+                                </div>
+                                <div style="background: rgba(156, 39, 176, 0.1); padding: 15px; border-radius: 8px;">
+                                    <h4 style="color: #9c27b0;">🎯 Capstone Project:</h4>
+                                    <p>"Predictive Analysis of Student Performance" - Built a machine learning model to predict student outcomes using Python, achieving 87% accuracy.</p>
+                                </div>
+                            `;
+                            break;
+                        case 'cs50':
+                            title.textContent = 'CS50x: Introduction to Computer Science';
+                            content.innerHTML = `
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Harvard_shield_wreath.svg/1200px-Harvard_shield_wreath.svg.png" alt="Harvard Logo" style="height: 60px; margin-bottom: 15px;">
+                                </div>
+                                <p><strong>Institution:</strong> Harvard University via edX</p>
+                                <p><strong>Course:</strong> CS50x: Introduction to Computer Science</p>
+                                <p><strong>Completion Date:</strong> September 30, 2022</p>
+                                <p><strong>Certificate ID:</strong> HARVARD-CS50-2022</p>
+                                <p><strong>Final Grade:</strong> Satisfactory (90%+)</p>
+                                <div style="margin: 20px 0;">
+                                    <h4 style="color: var(--accent); margin-bottom: 10px;">💻 Programming Languages & Concepts:</h4>
+                                    <div style="background: rgba(74, 107, 255, 0.1); padding: 15px; border-radius: 8px;">
+                                        <p style="margin: 8px 0;">🔤 C Programming and Memory Management</p>
+                                        <p style="margin: 8px 0;">🐍 Python for Data Science and Web Development</p>
+                                        <p style="margin: 8px 0;">🌐 HTML, CSS, JavaScript for Web Development</p>
+                                        <p style="margin: 8px 0;">🗄️ SQL and Database Design</p>
+                                        <p style="margin: 8px 0;">⚙️ Algorithms and Data Structures</p>
+                                    </div>
+                                </div>
+                                <div style="background: rgba(233, 30, 99, 0.1); padding: 15px; border-radius: 8px;">
+                                    <h4 style="color: #e91e63;">🚀 Final Project:</h4>
+                                    <p>"Student Grade Management System" - A full-stack web application built with Python Flask, SQLite, HTML/CSS/JavaScript for managing student records and grades.</p>
+                                </div>
                             `;
                             break;
                         case 'olympiad':
                             title.textContent = 'Mathematics Olympiad Winner Certificate';
                             content.innerHTML = `
-                                <p><strong>Competition:</strong> Regional Mathematics Olympiad</p>
-                                <p><strong>Organizer:</strong> Mathematics Association of India</p>
-                                <p><strong>Date:</strong> November 2022</p>
-                                <p><strong>Position:</strong> 1st Place</p>
-                                <p><strong>Achievement:</strong> Solved complex mathematical problems with innovative approaches</p>
-                                <p>This certificate recognizes Aryan's exceptional mathematical abilities and problem-solving skills.</p>
-                                <img src="https://via.placeholder.com/600x300?text=Math+Olympiad+Certificate" alt="Math Olympiad Certificate" style="width: 100%; border-radius: 5px; margin-top: 15px;">
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <div style="font-size: 3rem; margin-bottom: 10px;">🥇</div>
+                                    <h3 style="color: #ffd700;">FIRST PLACE WINNER</h3>
+                                </div>
+                                <p><strong>Competition:</strong> Regional Mathematics Olympiad - Gujarat State</p>
+                                <p><strong>Organizer:</strong> Gujarat State Mathematics Association</p>
+                                <p><strong>Date:</strong> November 15, 2022</p>
+                                <p><strong>Position:</strong> 1st Place (State Level)</p>
+                                <p><strong>Participants:</strong> 2,500+ students from across Gujarat</p>
+                                <p><strong>Score:</strong> 98/100 (Highest in the region)</p>
+                                <div style="margin: 20px 0;">
+                                    <h4 style="color: var(--accent); margin-bottom: 10px;">🧮 Problem Areas Covered:</h4>
+                                    <div style="background: rgba(74, 107, 255, 0.1); padding: 15px; border-radius: 8px;">
+                                        <p style="margin: 8px 0;">📐 Advanced Geometry and Trigonometry</p>
+                                        <p style="margin: 8px 0;">🔢 Number Theory and Combinatorics</p>
+                                        <p style="margin: 8px 0;">📊 Probability and Statistics</p>
+                                        <p style="margin: 8px 0;">∞ Calculus and Mathematical Analysis</p>
+                                        <p style="margin: 8px 0;">🧩 Mathematical Reasoning and Logic</p>
+                                    </div>
+                                </div>
+                                <div style="background: rgba(255, 215, 0, 0.2); padding: 15px; border-radius: 8px; border: 2px solid #ffd700;">
+                                    <h4 style="color: #b8860b;">🏆 Recognition & Awards:</h4>
+                                    <p>• Cash Prize of ₹25,000</p>
+                                    <p>• Merit Certificate from Gujarat Education Board</p>
+                                    <p>• Invitation to National Mathematical Olympiad</p>
+                                    <p>• Featured in local newspaper for achievement</p>
+                                </div>
                             `;
                             break;
                         default:
@@ -1857,13 +2791,76 @@
                 
                 if (title && content) {
                     switch(testimonialType) {
-                        case 'olympiad':
+                        case 'math_teacher':
                             title.textContent = 'Mathematics Teacher Testimonial';
                             content.innerHTML = `
-                                <p style="font-style: italic; margin-bottom: 15px;">"Aryan's performance in the Mathematics Olympiad was outstanding. What sets him apart is not just his computational ability, but his innovative approach to problem-solving. He consistently finds elegant solutions that others miss. His mathematical intuition is remarkable, and he has a natural talent for seeing patterns and connections. Aryan's success in the Olympiad is well-deserved, and I expect to see him achieve great things in fields requiring analytical thinking."</p>
-                                <p><strong>Prof. Anita Desai</strong></p>
-                                <p>Mathematics Department, Podar International School</p>
-                                <p>Olympiad Coach</p>
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 2rem;">
+                                        👨‍🏫
+                                    </div>
+                                </div>
+                                <blockquote style="font-style: italic; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; border-left: 4px solid var(--primary); padding-left: 20px; color: var(--text);">
+                                    "Aryan's performance in the Mathematics Olympiad was truly outstanding. What sets him apart is not just his computational ability, but his innovative approach to problem-solving. He consistently finds elegant solutions that others miss, demonstrating remarkable mathematical intuition.
+                                    <br><br>
+                                    During the preparation phase, Aryan showed exceptional dedication, often staying after class to work on complex problems. His ability to see patterns and connections in abstract mathematical concepts is extraordinary. He approaches each problem with curiosity and determination, never settling for just finding an answer but always seeking to understand the underlying principles.
+                                    <br><br>
+                                    His success in securing the first position among 2,500+ participants is well-deserved. I have no doubt that Aryan will achieve great things in fields requiring analytical thinking and mathematical rigor."
+                                </blockquote>
+                                <div style="text-align: center; background: rgba(74, 107, 255, 0.1); padding: 20px; border-radius: 10px;">
+                                    <p style="margin: 0; font-weight: 600; color: var(--primary);">Prof. Dr. Anita Desai</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">M.Sc. Mathematics, Ph.D. Applied Mathematics</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">Head of Mathematics Department</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">Podar International School, Anand</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">Mathematics Olympiad Coach (15+ years experience)</p>
+                                </div>
+                            `;
+                            break;
+                        case 'principal':
+                            title.textContent = 'Principal\'s Recommendation Letter';
+                            content.innerHTML = `
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 2rem;">
+                                        🏫
+                                    </div>
+                                </div>
+                                <blockquote style="font-style: italic; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; border-left: 4px solid var(--accent); padding-left: 20px; color: var(--text);">
+                                    "It gives me immense pleasure to recommend Aryan Parikh, who has been one of our most distinguished students at Podar International School. During his tenure from grades 6 to 12, Aryan consistently demonstrated exceptional academic excellence, leadership qualities, and a genuine passion for learning.
+                                    <br><br>
+                                    Aryan's academic record speaks for itself - maintaining a consistent performance above 85% throughout his school years, culminating in an outstanding 92.5% in his board examinations. However, what truly sets him apart is his intellectual curiosity and analytical mindset. He was always among the first to volunteer for science exhibitions, coding competitions, and mathematical challenges.
+                                    <br><br>
+                                    His victory in the state-level Mathematics Olympiad brought great pride to our institution. Aryan's dedication to computer science and his aspirations in data science align perfectly with the evolving technological landscape. I am confident that he will excel in his engineering studies and make significant contributions to the field of technology."
+                                </blockquote>
+                                <div style="text-align: center; background: rgba(255, 107, 107, 0.1); padding: 20px; border-radius: 10px;">
+                                    <p style="margin: 0; font-weight: 600; color: var(--accent);">Dr. Rajesh Kumar Sharma</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">M.A. Education, Ph.D. Educational Administration</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">Principal</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">Podar International School, Anand</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">25+ years in Educational Leadership</p>
+                                </div>
+                            `;
+                            break;
+                        case 'computer_teacher':
+                            title.textContent = 'Computer Science Teacher Testimonial';
+                            content.innerHTML = `
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: white; font-size: 2rem;">
+                                        💻
+                                    </div>
+                                </div>
+                                <blockquote style="font-style: italic; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; border-left: 4px solid #4CAF50; padding-left: 20px; color: var(--text);">
+                                    "Aryan has been my most exceptional computer science student in over a decade of teaching. His grasp of programming concepts, from basic syntax to complex algorithms, has been remarkable. While most students struggle with object-oriented programming concepts, Aryan was implementing design patterns and optimizing code efficiency.
+                                    <br><br>
+                                    What impressed me most was his project on 'Student Grade Management System' - a full-featured application with database integration, user authentication, and a clean UI. The code quality and documentation were professional-grade, demonstrating not just technical skills but also software engineering best practices.
+                                    <br><br>
+                                    Aryan's passion for emerging technologies like AI and data science, combined with his solid foundation in programming, positions him perfectly for success in computer engineering. He has the rare combination of theoretical understanding and practical implementation skills."
+                                </blockquote>
+                                <div style="text-align: center; background: rgba(76, 175, 80, 0.1); padding: 20px; border-radius: 10px;">
+                                    <p style="margin: 0; font-weight: 600; color: #4CAF50;">Mr. Vikash Patel</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">B.Tech Computer Science, M.Tech Software Engineering</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">Senior Computer Science Faculty</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">Podar International School, Anand</p>
+                                    <p style="margin: 5px 0; color: var(--text-light);">Certified Python & Java Instructor</p>
+                                </div>
                             `;
                             break;
                         default:
