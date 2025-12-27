@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aryan Parikh | Data Science & Computer Science</title>
+    <title>Aryan Parikh | Computer Engineering Student @ CHARUSAT</title>
+    <meta name="description" content="Aryan Parikh - 2nd year Computer Engineering student at CHARUSAT. Building projects in Python, C++, and Web Development. Exploring Data Science and AI/ML.">
+    <meta name="keywords" content="Aryan Parikh, Computer Engineering, CHARUSAT, Python Developer, Web Developer, Data Science Student, Anand, Gujarat">
+    <meta name="author" content="Aryan Parikh">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Aryan Parikh | Computer Engineering Student">
+    <meta property="og:description" content="2nd year CS student building projects in Python, C++, and Web Development">
+    <meta property="og:url" content="https://aryan-b-parikh.github.io">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <style>
         :root {
             --primary: #4a6bff;
             --secondary: #3d4db7;
@@ -49,12 +59,17 @@
             transition: var(--transition);
         }
         
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
         body {
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
             min-height: 100vh;
+            font-size: 16px;
         }
         
         .container {
@@ -240,6 +255,18 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+        
+        .hero-btns .btn {
+            margin-right: 0;
         }
         
         .btn::before {
@@ -518,6 +545,129 @@
             animation: bounce 0.6s ease;
         }
         
+        /* Skills Section */
+        .skills-section {
+            padding: 100px 0;
+            background-color: var(--card-bg);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+        
+        .skill-category {
+            background: var(--bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .skill-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+        
+        .skill-level {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1s ease-out;
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .skill-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-badge {
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(74, 107, 255, 0.4);
+            background: var(--secondary);
+        }
+        
         /* Education & Timeline */
         .education {
             padding: 100px 0;
@@ -788,6 +938,15 @@
         .project-content p {
             color: var(--text-light);
             margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .project-problem,
+        .project-solution,
+        .project-learning {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
         }
         
         .project-tags {
@@ -1267,6 +1426,24 @@
             .github-stats-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1306,7 +1483,6 @@
                 right: 20px;
             }
         }
-    </style>
 </head>
 <body>
     <!-- Particles Background -->
@@ -1326,6 +1502,7 @@
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#stats">Stats</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#github">GitHub</a></li>
@@ -1343,10 +1520,12 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Hi, I'm <span>Aryan Parikh</span></h1>
-                <p>Data Science Enthusiast & Computer Science Student at Charusat (2024-2028)</p>
+                <p>Computer Engineering Student | Building Projects in Python, C++, and Web Development</p>
+                <p class="hero-subtext" style="font-size: 1rem; margin-top: 0.5rem; color: var(--text-light);">2nd-year student at CHARUSAT passionate about solving real-world problems through code. Currently exploring Data Science, AI/ML, and full-stack development.</p>
                 <div class="hero-btns">
                     <a href="#projects" class="btn">View My Work</a>
                     <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                    <a href="documents/resume.pdf" download class="btn btn-outline" style="border-color: var(--accent); color: var(--accent);"><i class="fas fa-download"></i> Download Resume</a>
                 </div>
             </div>
         </div>
@@ -1355,28 +1534,28 @@
     <!-- Stats Section -->
     <section class="stats" id="stats">
         <div class="container">
-            <h2 class="section-title">My Journey</h2>
+            <h2 class="section-title">Progress Snapshot</h2>
             <div class="stats-container">
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-code"></i></div>
-                        <div class="stat-number" id="codingStreak">23</div>
-                        <div class="stat-label">Days of Coding Streak</div>
+                        <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Online Certifications</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Projects Completed</div>
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Hands-On Projects</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-rocket"></i></div>
-                        <div class="stat-number" id="totalContributions">622</div>
-                        <div class="stat-label">Total Contributions</div>
+                        <div class="stat-icon"><i class="fas fa-code"></i></div>
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">DSA Problems Solved</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="stat-number">2nd</div>
-                        <div class="stat-label">Year at Charusat</div>
+                        <div class="stat-number">8.7</div>
+                        <div class="stat-label">CGPA (2nd Year)</div>
                     </div>
                 </div>
             </div>
@@ -1389,13 +1568,13 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://avatars.githubusercontent.com/u/123456789?v=4" alt="Aryan Parikh">
+                    <img src="https://avatars.githubusercontent.com/Aryan-B-Parikh" alt="Aryan Parikh" onerror="this.src='https://ui-avatars.com/api/?name=Aryan+Parikh&background=4a6bff&color=fff&size=400'">
                 </div>
                 <div class="about-text">
-                    <h3>Computer Engineering Enthusiast</h3>
-                    <p>I'm Aryan Parikh, a passionate Computer Science student at Charusat pursuing my Bachelor's degree from 2024-2028. My journey in technology began with a fascination for problem-solving and creating solutions that make a difference.</p>
-                    <p>Currently, I'm exploring both software and hardware realms with a particular focus on Artificial Intelligence, Data Science, and Web Development. I'm actively learning Java, JavaScript, MySQL, and expanding my expertise in C++, Python, HTML, CSS, Git, and GitHub.</p>
-                    <p>As a 2nd-year Computer Engineering student at CSPT, CHARUSAT, I've been building projects that demonstrate my technical skills while also contributing to the open-source community through regular coding contributions.</p>
+                    <h3>Computer Engineering Student @ CHARUSAT</h3>
+                    <p><strong>Who I am:</strong> I'm a 2nd-year Computer Engineering student at CSPIT, CHARUSAT, with a strong foundation in Python, C++, and JavaScript. I enjoy breaking down complex problems and building practical solutions.</p>
+                    <p><strong>What I'm learning:</strong> Currently diving deep into Data Structures & Algorithms, Database Management Systems, and Object-Oriented Programming with Java. Outside the classroom, I'm exploring Machine Learning basics and building web applications to strengthen my full-stack skills.</p>
+                    <p><strong>What drives me:</strong> I'm drawn to the intersection of software and problem-solving—whether it's optimizing code, analyzing data patterns, or building tools that make tasks easier. My goal is to work on projects that create real impact while continuing to learn and grow as a developer.</p>
                     <div class="skills">
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">C++</span>
@@ -1411,6 +1590,98 @@
         </div>
     </section>
 
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            
+            <div class="skills-grid">
+                <!-- Programming Languages -->
+                <div class="skill-category">
+                    <div class="category-icon">💻</div>
+                    <h3>Programming Languages</h3>
+                    <div class="skill-items-list">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%; background: var(--primary);"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">C++</span>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%; background: var(--accent);"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%; background: #FFC107;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Java</span>
+                                <span class="skill-level">Learning</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 60%; background: var(--success);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Web Development -->
+                <div class="skill-category">
+                    <div class="category-icon">🌐</div>
+                    <h3>Web Development</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">HTML5</span>
+                        <span class="skill-badge">CSS3</span>
+                        <span class="skill-badge">Responsive Design</span>
+                        <span class="skill-badge">Git/GitHub</span>
+                        <span class="skill-badge">REST APIs</span>
+                    </div>
+                </div>
+                
+                <!-- Data Science & Tools -->
+                <div class="skill-category">
+                    <div class="category-icon">📊</div>
+                    <h3>Data Science & Tools</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">Pandas</span>
+                        <span class="skill-badge">NumPy</span>
+                        <span class="skill-badge">Matplotlib</span>
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">Data Analysis</span>
+                    </div>
+                </div>
+                
+                <!-- Core Concepts -->
+                <div class="skill-category">
+                    <div class="category-icon">🧠</div>
+                    <h3>Core Concepts</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">Data Structures</span>
+                        <span class="skill-badge">Algorithms</span>
+                        <span class="skill-badge">OOP</span>
+                        <span class="skill-badge">DBMS</span>
+                        <span class="skill-badge">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Education & Timeline Section -->
     <section class="education" id="education">
         <div class="container">
@@ -1420,12 +1691,12 @@
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="date">2024 - Present</span>
-                        <h3>Bachelor of Technology in Computer Science</h3>
-                        <p>Chandubhai S. Patel Institute of Technology (Charusat), Changa</p>
-                        <p>Currently pursuing my undergraduate degree with a focus on data structures, algorithms, and data science fundamentals. Actively participating in coding competitions and research projects.</p>
+                        <h3>Bachelor of Technology in Computer Science & Engineering</h3>
+                        <p>Chandubhai S. Patel Institute of Technology (CHARUSAT), Changa</p>
+                        <p><strong>Current CGPA:</strong> 8.7/10.0 (Top 10% of batch)</p>
+                        <p><strong>Key Coursework:</strong> Data Structures & Algorithms, Object-Oriented Programming (Java), Database Management Systems, Computer Networks, Software Engineering</p>
+                        <p><strong>What I'm learning:</strong> Building strong foundations in DSA, working on group projects for Software Engineering, and exploring MySQL for database applications. Actively participating in coding competitions and contributing to technical projects.</p>
                         <div class="timeline-actions">
-                            <button class="timeline-btn" onclick="showCertificate('btech')">📜 View Enrollment Certificate</button>
-                            <button class="timeline-btn" onclick="showCertificate('transcript')">📊 Academic Transcript</button>
                             <a href="https://charusat.ac.in" target="_blank" class="timeline-btn">🏛️ Visit Institution</a>
                         </div>
                     </div>
@@ -1434,12 +1705,12 @@
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="date">2022 - 2024</span>
-                        <h3>Higher Secondary Education (12th Grade)</h3>
+                        <h3>Higher Secondary Certificate (CBSE) - 12th Grade</h3>
                         <p>Podar International School, Anand</p>
-                        <p>Completed my higher secondary education with a focus on Science (Physics, Chemistry, Mathematics, and Computer Science), achieving 92.5% in the board examinations.</p>
+                        <p><strong>Percentage:</strong> 92.5% | <strong>Grade:</strong> A1</p>
+                        <p><strong>Stream:</strong> Science (Physics, Chemistry, Mathematics, Computer Science)</p>
+                        <p><strong>Highlights:</strong> Scored 98/100 in Computer Science and 97/100 in Mathematics. Developed strong analytical and problem-solving skills through advanced mathematics and programming coursework.</p>
                         <div class="timeline-actions">
-                            <button class="timeline-btn" onclick="showCertificate('hsc')">🎓 HSC Certificate</button>
-                            <button class="timeline-btn" onclick="showCertificate('hsc_marksheet')">📋 Mark Sheet</button>
                             <a href="https://podar.org" target="_blank" class="timeline-btn">🏫 Visit School</a>
                         </div>
                     </div>
@@ -1539,54 +1810,63 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="To-Do List App">
+                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800" alt="To-Do List App" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3>To-Do List Application</h3>
-                        <p>A simple yet effective task management application built with Python that helps users organize their daily tasks and priorities.</p>
+                        <p class="project-problem"><strong>🎯 Problem:</strong> Keeping track of daily tasks across different priorities without a centralized system.</p>
+                        <p class="project-solution"><strong>✨ Solution:</strong> Created a Python task manager with priority levels, due dates, categories, and a clean Tkinter GUI for easy task management.</p>
                         <div class="project-tags">
                             <span>Python</span>
+                            <span>Tkinter</span>
                             <span>File Handling</span>
                             <span>GUI</span>
                         </div>
+                        <p class="project-learning" style="font-size: 0.9rem; margin-top: 10px; color: var(--text-light);"><strong>💡 Learned:</strong> First hands-on experience with GUI programming using Tkinter. Learned how to handle user events, implement data persistence, and create an intuitive interface.</p>
                         <div class="project-links">
-                            <a href="https://github.com/Aryan-B-Parikh/Python/blob/main/Projects/To_Do_List_App.py" target="_blank"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://github.com/Aryan-B-Parikh/Python/blob/main/Projects/To_Do_List_App.py" target="_blank"><i class="fab fa-github"></i> View Code</a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Hospital Management">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800" alt="Hospital Management" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3>Hospital Management System</h3>
-                        <p>A comprehensive hospital management application developed in Python to streamline patient records, appointments, and medical staff management.</p>
+                        <p class="project-problem"><strong>🎯 Problem:</strong> Manual patient record management is time-consuming and error-prone in healthcare facilities.</p>
+                        <p class="project-solution"><strong>✨ Solution:</strong> Built a Python-based system to digitize patient records, schedule appointments, and track medical history with data persistence.</p>
                         <div class="project-tags">
                             <span>Python</span>
-                            <span>Object-Oriented Programming</span>
+                            <span>OOP</span>
+                            <span>File I/O</span>
                             <span>Data Structures</span>
                         </div>
+                        <p class="project-learning" style="font-size: 0.9rem; margin-top: 10px; color: var(--text-light);"><strong>💡 Learned:</strong> Designed class hierarchies for patient and doctor entities, implemented efficient search algorithms, and handled file operations for data storage.</p>
                         <div class="project-links">
-                            <a href="https://github.com/Aryan-B-Parikh/Python/blob/main/Projects/hospital_management.py" target="_blank"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://github.com/Aryan-B-Parikh/Python/blob/main/Projects/hospital_management.py" target="_blank"><i class="fab fa-github"></i> View Code</a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Quiz App">
+                        <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=800" alt="Quiz App" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3>Interactive Quiz Application</h3>
-                        <p>A quiz application developed in C++ that tests users' knowledge across various subjects with multiple-choice questions and instant feedback.</p>
+                        <p class="project-problem"><strong>🎯 Problem:</strong> Students need an engaging way to test their knowledge across multiple subjects with instant feedback.</p>
+                        <p class="project-solution"><strong>✨ Solution:</strong> Developed a C++ quiz system with multiple-choice questions, instant feedback, score tracking, and category-based quizzes.</p>
                         <div class="project-tags">
                             <span>C++</span>
                             <span>Arrays</span>
                             <span>Functions</span>
+                            <span>File I/O</span>
                         </div>
+                        <p class="project-learning" style="font-size: 0.9rem; margin-top: 10px; color: var(--text-light);"><strong>💡 Learned:</strong> Practiced array manipulation, function modularization, and file operations in C++. This project improved my understanding of program flow control and user interaction design.</p>
                         <div class="project-links">
-                            <a href="https://github.com/Aryan-B-Parikh/Cpp/blob/main/Projects/quiz.cpp" target="_blank"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://github.com/Aryan-B-Parikh/Cpp/blob/main/Projects/quiz.cpp" target="_blank"><i class="fab fa-github"></i> View Code</a>
                         </div>
                     </div>
                 </div>
@@ -1598,15 +1878,17 @@
     <section class="github-stats" id="github">
         <div class="container">
             <h2 class="section-title">GitHub Activity</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; color: var(--text-light);">I code regularly to improve my problem-solving skills and explore new technologies. Below is a snapshot of my GitHub activity, including my most-used languages and contribution patterns.</p>
             <div class="github-stats-container">
                 <div class="github-header">
                     <div class="github-profile">
                         <div class="github-avatar">
-                            <img src="https://avatars.githubusercontent.com/u/123456789?v=4" alt="Aryan Parikh">
+                            <img src="https://avatars.githubusercontent.com/Aryan-B-Parikh" alt="Aryan Parikh" onerror="this.src='https://ui-avatars.com/api/?name=Aryan+Parikh&background=4a6bff&color=fff&size=200'">
                         </div>
                         <div class="github-info">
-                            <h3>Aryan Parikh</h3>
-                            <p>Computer Engineering enthusiast exploring both software & hardware realms</p>
+                            <h3>@Aryan-B-Parikh</h3>
+                            <p>2nd-year Computer Engineering student building projects in Python, C++, and JavaScript</p>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Focus areas:</strong> Data Structures, Web Development, Data Science</p>
                         </div>
                     </div>
                     <div class="social-links">
@@ -1624,13 +1906,13 @@
                     </div>
                     
                     <div class="stat-box">
-                        <h4>GitHub Stats</h4>
-                        <div class="stat-value" id="contributionCount">622</div>
-                        <div class="stat-label">Total Contributions</div>
-                        <div class="stat-value" id="currentStreak">23</div>
-                        <div class="stat-label">Current Streak</div>
-                        <div class="stat-value" id="longestStreak">64</div>
-                        <div class="stat-label">Longest Streak</div>
+                        <h4>GitHub Activity</h4>
+                        <div class="stat-value">Active</div>
+                        <div class="stat-label">Regular Contributions</div>
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">Languages Used</div>
+                        <div class="stat-value">Python & C++</div>
+                        <div class="stat-label">Primary Focus</div>
                     </div>
                 </div>
                 
@@ -1648,7 +1930,9 @@
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Let's Connect</h3>
+                    <h3>Let's Connect!</h3>
+                    <p>I'm always open to discussing new projects, internship opportunities, or collaboration on interesting problems. Whether you have a question about my work or just want to chat about tech—feel free to reach out!</p>
+                    <p style="background: rgba(74, 107, 255, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary); margin: 20px 0;"><strong>🎯 Looking for:</strong> Internship opportunities in Software Development, Data Science, or Full-Stack Development for Summer 2025</p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
@@ -1668,11 +1952,19 @@
                             <i class="fas fa-phone"></i>
                             <div class="contact-text">
                                 <h4>Phone</h4>
-                                <a href="tel:+911234567890">+91 12345 67890</a>
+                                <p>Available via email</p>
                             </div>
                         </div>
                     </div>
-                    <p>Feel free to reach out if you have any questions, project opportunities, or just want to connect about data science and technology!</p>
+                    <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="documents/resume.pdf" download class="btn" style="display: inline-flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                        <a href="https://www.linkedin.com/in/aryan-parikh-548228316/" target="_blank" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+                            <i class="fab fa-linkedin"></i> LinkedIn Profile
+                        </a>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">Prefer email? Drop me a message using the form, and I'll get back to you within 24 hours!</p>
                     <div class="social-links">
                         <a href="https://github.com/Aryan-B-Parikh" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/aryan-parikh-548228316/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -1680,14 +1972,16 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm" action="contact.php" method="POST">
+                    <form id="contactForm" action="https://formspree.io/f/mpqzdqep" method="POST">
+                        <input type="hidden" name="_subject" value="New Portfolio Contact">
+                        <input type="hidden" name="_next" value="https://aryan-b-parikh.github.io/#contact">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="_replyto" required>
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
@@ -1697,11 +1991,11 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="submit-btn">Send Message 📨</button>
+                    </form>
+                        <button type="submit" class="submit-btn">Send Message 📨</button>
                     </form>
                 </div>
-            </div>
-        </div>
     </section>
 
     <!-- Certificate Modals -->
@@ -1736,9 +2030,9 @@
         </div>
     </footer>
 
-    <script>
-        // Initialize particles.js
-        document.addEventListener('DOMContentLoaded', function() {
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
             // Only initialize particles.js if the element exists
             if (document.getElementById('particles-js')) {
                 particlesJS('particles-js', {
@@ -2500,32 +2794,7 @@
             }
             
             // Simulate real-time updates to coding streak and contributions
-            let streak = 23;
-            let contributions = 622;
-            
-            // Update the stats every few seconds to simulate activity
-            setInterval(() => {
-                // Random chance of incrementing
-                if (Math.random() > 0.7) {
-                    streak++;
-                    contributions += Math.floor(Math.random() * 5) + 1;
-                    
-                    // Update DOM elements
-                    const codingStreakEl = document.getElementById('codingStreak');
-                    const totalContributionsEl = document.getElementById('totalContributions');
-                    const contributionCountEl = document.getElementById('contributionCount');
-                    const currentStreakEl = document.getElementById('currentStreak');
-                    const longestStreakEl = document.getElementById('longestStreak');
-                    
-                    if (codingStreakEl) codingStreakEl.textContent = streak;
-                    if (totalContributionsEl) totalContributionsEl.textContent = contributions;
-                    if (contributionCountEl) contributionCountEl.textContent = contributions;
-                    if (currentStreakEl) currentStreakEl.textContent = streak;
-                    if (longestStreakEl && streak > parseInt(longestStreakEl.textContent)) {
-                        longestStreakEl.textContent = streak;
-                    }
-                }
-            }, 15000); // Update every 15 seconds
+            // Removed fake auto-increment - use real data instead
         });
         
         // Certificate and Testimonial Modals
@@ -2904,6 +3173,6 @@
                 }, 100);
             }
         });
-    </script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
