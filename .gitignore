@@ -1,0 +1,35 @@
+# Development tools
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Development scripts (keep locally, don't commit)
+scripts/
+*.ps1
+*.sh
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Node modules (if you add build tools later)
+node_modules/
+package-lock.json
+
+# Build outputs (if using preprocessors)
+dist/
+build/
+
+# Backup files
+*.bak
+*~
