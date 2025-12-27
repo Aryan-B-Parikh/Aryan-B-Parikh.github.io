@@ -1,4 +1,4 @@
-# Development tools
+# Development tools - DO NOT COMMIT
 .vscode/
 .idea/
 *.swp
@@ -8,6 +8,7 @@
 scripts/
 *.ps1
 *.sh
+*.bak
 
 # OS files
 .DS_Store
