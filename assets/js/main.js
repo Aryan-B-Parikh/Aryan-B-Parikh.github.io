@@ -282,11 +282,16 @@ document.addEventListener('DOMContentLoaded', function() {
 // Interactive Stats Counter Animation
 function animateCounter(element, start, end, duration) {
     let startTimestamp = null;
+    const isDecimal = element.dataset.isDecimal === 'true';
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const currentValue = Math.floor(progress * (end - start) + start);
-        element.textContent = currentValue;
+        const currentValue = progress * (end - start) + start;
+        if (isDecimal) {
+            element.textContent = currentValue.toFixed(3);
+        } else {
+            element.textContent = Math.floor(currentValue);
+        }
         element.classList.add('counting');
         if (progress < 1) {
             window.requestAnimationFrame(step);
@@ -311,9 +316,18 @@ const observer = new IntersectionObserver((entries) => {
             if (entry.target.classList.contains('stat-card')) {
                 const statNumber = entry.target.querySelector('.stat-number');
                 if (statNumber && !statNumber.dataset.animated) {
-                    const endValue = parseInt(statNumber.textContent.replace(/\D/g, '')) || 0;
-                    statNumber.dataset.animated = 'true';
-                    animateCounter(statNumber, 0, endValue, 2000);
+                    const text = statNumber.textContent;
+                    // Check if it contains a decimal (either . or ·)
+                    if (text.includes('.') || text.includes('·')) {
+                        const endValue = parseFloat(text.replace(/[^\d.]/g, ''));
+                        statNumber.dataset.animated = 'true';
+                        statNumber.dataset.isDecimal = 'true';
+                        animateCounter(statNumber, 0, endValue, 2000);
+                    } else {
+                        const endValue = parseInt(text.replace(/\D/g, '')) || 0;
+                        statNumber.dataset.animated = 'true';
+                        animateCounter(statNumber, 0, endValue, 2000);
+                    }
                 }
                 setTimeout(() => {
                     entry.target.classList.add('animate');
