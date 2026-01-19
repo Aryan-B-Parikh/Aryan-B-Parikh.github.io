@@ -31,6 +31,46 @@
     --gradient: linear-gradient(135deg, #5e72e4, #3247b5);
 }
 
+/* Glassmorphism & Glow Utilities */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    /* Very transparent for dark mode */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.dark-mode .glass-panel {
+    background: rgba(30, 30, 30, 0.6);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.aura-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(74, 107, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: float-slow 10s infinite alternate;
+}
+
+.text-glow {
+    text-shadow: 0 0 10px rgba(74, 107, 255, 0.5), 0 0 20px rgba(74, 107, 255, 0.3);
+}
+
+@keyframes float-slow {
+    0% {
+        transform: translate(-20%, -20%) scale(1);
+    }
+
+    100% {
+        transform: translate(20%, 20%) scale(1.1);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -206,7 +246,7 @@ nav {
     color: var(--text);
 }
 
-/* Hero Section */
+/* Hero Section - Always Dark for Constellation Effect */
 .hero {
     height: 100vh;
     display: flex;
@@ -214,6 +254,21 @@ nav {
     padding-top: 80px;
     position: relative;
     overflow: hidden;
+    background-color: #0f0f13;
+    /* Deep space black */
+    color: #ffffff;
+    /* Always light text */
+}
+
+/* Ensure hero text overrides global theme text color if needed */
+.hero h1,
+.hero p,
+.hero .hero-subtext {
+    color: #ffffff !important;
+}
+
+.hero .text-light {
+    color: #cccccc !important;
 }
 
 #particles-js {
@@ -224,6 +279,8 @@ nav {
     left: 0;
     z-index: 1;
     pointer-events: all;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+    /* Subtle gradient */
 }
 
 .hero-content {

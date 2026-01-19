@@ -89,19 +89,34 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <!-- Aura Glow Effect -->
+        <div class="aura-glow"
+            style="top: -10%; left: -10%; background: radial-gradient(circle, rgba(74, 107, 255, 0.4) 0%, rgba(0, 0, 0, 0) 70%);">
+        </div>
+        <div class="aura-glow"
+            style="bottom: -10%; right: -10%; background: radial-gradient(circle, rgba(255, 107, 107, 0.2) 0%, rgba(0, 0, 0, 0) 70%); animation-delay: -5s;">
+        </div>
+
         <div class="container">
-            <div class="hero-content">
-                <h1>Hi, I'm <span>Aryan Parikh</span></h1>
-                <p>I am a <span class="typing-text"></span><span class="cursor-blink">|</span></p>
-                <p class="hero-subtext" style="font-size: 1rem; margin-top: 0.5rem; color: var(--text-light);">2nd-year
-                    student at CHARUSAT passionate about solving real-world problems through code. Currently exploring
-                    Data Science, AI/ML, and full-stack development.</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn">View My Work</a>
-                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            <div class="hero-content glass-panel"
+                style="padding: 3rem; border-radius: 20px; text-align: left; max-width: 900px; margin: 0 auto; position: relative; overflow: hidden;">
+                <h1 class="text-glow" style="font-size: 4rem; line-height: 1.1;">Hi, I'm <span
+                        style="color: var(--primary); text-shadow: 0 0 20px rgba(74, 107, 255, 0.4);">Aryan
+                        Parikh</span></h1>
+                <p style="font-size: 1.5rem; margin: 1.5rem 0; font-weight: 300;">I am a <span class="typing-text"
+                        style="color: var(--accent); font-weight: 600;"></span><span class="cursor-blink">|</span></p>
+                <p class="hero-subtext" style="font-size: 1.1rem; color: var(--text); opacity: 0.9; max-width: 600px;">
+                    2nd-year student at CHARUSAT crafting digital experiences. Exploring the intersection of Data
+                    Science, AI/ML, and Creative Web Development.
+                </p>
+                <div class="hero-btns" style="justify-content: flex-start; margin-top: 3rem;">
+                    <a href="#projects" class="btn" style="box-shadow: 0 0 20px rgba(74, 107, 255, 0.5);">View My
+                        Work</a>
+                    <a href="#contact" class="btn btn-outline" style="border-width: 2px;">Get In Touch</a>
                     <a href="documents/resume.pdf" download class="btn btn-outline"
-                        style="border-color: var(--accent); color: var(--accent);"><i class="fas fa-download"></i>
-                        Download Resume</a>
+                        style="border-color: var(--accent); color: var(--accent); display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
                 </div>
             </div>
         </div>
@@ -584,7 +599,8 @@
                     <p
                         style="background: rgba(74, 107, 255, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary); margin: 20px 0;">
                         <strong>🎯 Looking for:</strong> Internship opportunities in Software Development, Data Science,
-                        or Full-Stack Development for Summer 2025</p>
+                        or Full-Stack Development for Summer 2025
+                    </p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>

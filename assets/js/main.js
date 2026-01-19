@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', function () {
         particlesJS('particles-js', {
             "particles": {
                 "number": {
-                    "value": 80,
+                    "value": 100,
                     "density": {
                         "enable": true,
                         "value_area": 800
                     }
                 },
                 "color": {
-                    "value": "#4a6bff"
+                    "value": "#ffffff"
                 },
                 "shape": {
                     "type": "circle",
@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 "opacity": {
                     "value": 0.5,
-                    "random": false,
+                    "random": true,
                     "anim": {
-                        "enable": false,
+                        "enable": true,
                         "speed": 1,
                         "opacity_min": 0.1,
                         "sync": false
@@ -51,12 +51,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     "enable": true,
                     "distance": 150,
                     "color": "#4a6bff",
-                    "opacity": 0.4,
-                    "width": 1
+                    "opacity": 0.6,
+                    "width": 1.5
                 },
                 "move": {
                     "enable": true,
-                    "speed": 2,
+                    "speed": 1.5,
                     "direction": "none",
                     "random": false,
                     "straight": false,
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 "modes": {
                     "grab": {
-                        "distance": 140,
+                        "distance": 180,
                         "line_linked": {
                             "opacity": 1
                         }
