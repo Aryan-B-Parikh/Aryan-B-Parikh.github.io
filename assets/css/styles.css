@@ -65,7 +65,8 @@ p {
     width: 40px;
     height: 40px;
     border: 2px solid var(--accent);
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    /* Only transition size/color, not movement */
+    transition: width 0.2s ease-out, height 0.2s ease-out, background-color 0.2s ease-out;
 }
 
 /* Cursor Hover State */

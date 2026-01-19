@@ -2,7 +2,7 @@
 let languagesChart;
 
 // Initialize particles.js when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Only initialize particles.js if the element exists
     if (document.getElementById('particles-js')) {
         particlesJS('particles-js', {
@@ -115,26 +115,53 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    
+
     // Custom Cursor Logic
     const cursorDot = document.getElementById('cursor-dot');
     const cursorOutline = document.getElementById('cursor-outline');
 
     if (cursorDot && cursorOutline && window.matchMedia("(pointer: fine)").matches) {
-        window.addEventListener('mousemove', function(e) {
-            const posX = e.clientX;
-            const posY = e.clientY;
 
-            // Dot follows immediately
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
+        // Mouse positions
+        let mouseX = 0;
+        let mouseY = 0;
 
-            // Outline follows with slight delay (animation in CSS or via animate() here)
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+        // Cursor positions
+        let outlineX = 0;
+        let outlineY = 0;
+        let dotX = 0;
+        let dotY = 0;
+
+        window.addEventListener('mousemove', function (e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         });
+
+        // Animation Loop using requestAnimationFrame
+        function animateCursor() {
+            // Lerp (Linear Interpolation) for smooth delay
+            // logic: current = current + (target - current) * factor
+
+            // Dot follows quickly
+            dotX += (mouseX - dotX) * 1;
+            dotY += (mouseY - dotY) * 1;
+
+            // Outline follows slowly foundation
+            outlineX += (mouseX - outlineX) * 0.15;
+            outlineY += (mouseY - outlineY) * 0.15;
+
+            // Apply positions
+            cursorDot.style.left = `${dotX}px`;
+            cursorDot.style.top = `${dotY}px`;
+
+            cursorOutline.style.left = `${outlineX}px`;
+            cursorOutline.style.top = `${outlineY}px`;
+
+            requestAnimationFrame(animateCursor);
+        }
+
+        // Start the loop
+        animateCursor();
 
         // Hover effect for links and buttons
         const hoverElements = document.querySelectorAll('a, button, .project-card, .stat-card, .skill-tag, .theme-toggle');
@@ -159,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function type() {
             const currentWord = words[wordIndex];
-            
+
             if (isDeleting) {
                 typingText.textContent = currentWord.substring(0, charIndex - 1);
                 charIndex--;
@@ -181,16 +208,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
             setTimeout(type, typeSpeed);
         }
-        
+
         // Start typing
         setTimeout(type, 1000);
     }
-    
+
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-        
+
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
@@ -217,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Interactive skill tags
     const skillTags = document.querySelectorAll('.skill-tag');
     skillTags.forEach(tag => {
-        tag.addEventListener('click', function() {
+        tag.addEventListener('click', function () {
             this.classList.add('pulse');
             setTimeout(() => {
                 this.classList.remove('pulse');
@@ -230,13 +257,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Interactive project cards
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
-        card.addEventListener('click', function(e) {
+        card.addEventListener('click', function (e) {
             if (e.target.tagName === 'A' || e.target.tagName === 'I') return;
             const projectTitle = this.querySelector('h3').textContent;
             showProjectDetails(projectTitle, this);
         });
 
-        card.addEventListener('mousemove', function(e) {
+        card.addEventListener('mousemove', function (e) {
             const rect = this.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -247,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = `translateY(-15px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
 
-        card.addEventListener('mouseleave', function() {
+        card.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
         });
     });
@@ -295,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     tooltip: {
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return `${context.dataset.label}: ${context.parsed.y}%`;
                             }
                         }
@@ -310,15 +337,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         const inputs = contactForm.querySelectorAll('input, textarea');
         inputs.forEach(input => {
-            input.addEventListener('input', function() {
+            input.addEventListener('input', function () {
                 validateField(this);
             });
-            input.addEventListener('blur', function() {
+            input.addEventListener('blur', function () {
                 validateField(this);
             });
         });
 
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const subject = document.getElementById('subject').value.trim();
@@ -382,7 +409,7 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            
+
             if (entry.target.classList.contains('stat-card')) {
                 const statNumber = entry.target.querySelector('.stat-number');
                 if (statNumber && !statNumber.dataset.animated) {
@@ -442,7 +469,7 @@ function showSkillInfo(skillName) {
         <p>${skillInfo[skillName] || 'Proficient in ' + skillName}</p>
         <button onclick="this.parentElement.remove()" style="margin-top: 15px; padding: 8px 16px; background: var(--primary); color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>
     `;
-    
+
     document.body.appendChild(tooltip);
     setTimeout(() => {
         if (tooltip.parentElement) {
@@ -491,7 +518,7 @@ function showProjectDetails(projectTitle, cardElement) {
         z-index: 2000;
         animation: fadeIn 0.3s ease;
     `;
-    
+
     modal.innerHTML = `
         <div style="background: var(--card-bg); padding: 40px; border-radius: 20px; max-width: 600px; max-height: 80vh; overflow-y: auto; position: relative;">
             <button onclick="this.closest('.project-modal').remove()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text);">×</button>
@@ -508,9 +535,9 @@ function showProjectDetails(projectTitle, cardElement) {
             <a href="${project.github}" target="_blank" style="display: inline-block; background: var(--gradient); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: 600;">View Source Code</a>
         </div>
     `;
-    
+
     document.body.appendChild(modal);
-    modal.addEventListener('click', function(e) {
+    modal.addEventListener('click', function (e) {
         if (e.target === modal) {
             modal.remove();
         }
@@ -578,7 +605,7 @@ function validateField(field) {
     const fieldName = field.name;
     clearFieldError(field.id);
 
-    switch(fieldName) {
+    switch (fieldName) {
         case 'name':
             if (value.length > 0 && value.length < 2) {
                 showFieldError(field.id, 'Name must be at least 2 characters');
@@ -621,15 +648,15 @@ function showFieldError(fieldId, message) {
     if (!field) return;
     const formGroup = field.closest('.form-group');
     if (!formGroup) return;
-    
+
     formGroup.classList.remove('success');
     formGroup.classList.add('error');
-    
+
     const existingError = formGroup.querySelector('.error-message');
     if (existingError) {
         existingError.remove();
     }
-    
+
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.style.cssText = `
@@ -639,7 +666,7 @@ function showFieldError(fieldId, message) {
     `;
     errorDiv.textContent = message;
     formGroup.appendChild(errorDiv);
-    
+
     field.style.borderColor = '#e74c3c';
     field.style.boxShadow = '0 0 0 3px rgba(231, 76, 60, 0.1)';
 }
@@ -649,7 +676,7 @@ function showFieldSuccess(fieldId) {
     if (!field) return;
     const formGroup = field.closest('.form-group');
     if (!formGroup) return;
-    
+
     formGroup.classList.remove('error');
     formGroup.classList.add('success');
     field.style.borderColor = '#27ae60';
@@ -661,7 +688,7 @@ function clearFieldError(fieldId) {
     if (!field) return;
     const formGroup = field.closest('.form-group');
     if (!formGroup) return;
-    
+
     formGroup.classList.remove('error', 'success');
     const errorMessage = formGroup.querySelector('.error-message');
     if (errorMessage) {
@@ -672,7 +699,7 @@ function clearFieldError(fieldId) {
 }
 
 // Update chart colors when theme changes
-document.body.addEventListener('transitionend', function(e) {
+document.body.addEventListener('transitionend', function (e) {
     if (e.propertyName === 'background-color' && languagesChart) {
         setTimeout(() => {
             if (languagesChart) {
