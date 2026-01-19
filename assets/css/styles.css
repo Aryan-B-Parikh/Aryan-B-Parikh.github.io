@@ -83,38 +83,28 @@ p {
     margin-bottom: 1.2rem;
 }
 
-/* Custom Cursor */
-.cursor-dot,
-.cursor-outline {
+/* Custom Cursor - Blend Mode */
+.cursor {
     position: fixed;
     top: 0;
     left: 0;
-    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: white;
     border-radius: 50%;
-    z-index: 9999;
     pointer-events: none;
-}
-
-.cursor-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent);
-}
-
-.cursor-outline {
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--accent);
-    /* Only transition size/color, not movement */
-    transition: width 0.2s ease-out, height 0.2s ease-out, background-color 0.2s ease-out;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
+    will-change: transform;
 }
 
 /* Cursor Hover State */
-body.hovering .cursor-outline {
-    width: 60px;
-    height: 60px;
-    background-color: rgba(74, 107, 255, 0.1);
-    border-color: transparent;
+body.hovering .cursor {
+    transform: translate(-50%, -50%) scale(2.5);
+    background-color: white;
+    /* Keep white for difference mode to work */
 }
 
 /* Hide default cursor on desktop */

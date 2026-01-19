@@ -117,54 +117,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelector('.nav-links');
 
     // Custom Cursor Logic
-    const cursorDot = document.getElementById('cursor-dot');
-    const cursorOutline = document.getElementById('cursor-outline');
+    const cursor = document.getElementById('cursor');
 
-    if (cursorDot && cursorOutline && window.matchMedia("(pointer: fine)").matches) {
+    if (cursor && window.matchMedia("(pointer: fine)").matches) {
 
-        // Mouse positions
         let mouseX = 0;
         let mouseY = 0;
-
-        // Cursor positions
-        let outlineX = 0;
-        let outlineY = 0;
-        let dotX = 0;
-        let dotY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
 
         window.addEventListener('mousemove', function (e) {
             mouseX = e.clientX;
             mouseY = e.clientY;
         });
 
-        // Animation Loop using requestAnimationFrame
         function animateCursor() {
-            // Lerp (Linear Interpolation) for smooth delay
-            // logic: current = current + (target - current) * factor
+            // Smooth follow with Lerp
+            cursorX += (mouseX - cursorX) * 0.2;
+            cursorY += (mouseY - cursorY) * 0.2;
 
-            // Dot follows quickly
-            dotX += (mouseX - dotX) * 1;
-            dotY += (mouseY - dotY) * 1;
-
-            // Outline follows slowly foundation
-            outlineX += (mouseX - outlineX) * 0.15;
-            outlineY += (mouseY - outlineY) * 0.15;
-
-            // Apply positions
-            cursorDot.style.left = `${dotX}px`;
-            cursorDot.style.top = `${dotY}px`;
-
-            cursorOutline.style.left = `${outlineX}px`;
-            cursorOutline.style.top = `${outlineY}px`;
+            cursor.style.left = `${cursorX}px`;
+            cursor.style.top = `${cursorY}px`;
 
             requestAnimationFrame(animateCursor);
         }
 
-        // Start the loop
         animateCursor();
 
         // Hover effect for links and buttons
-        const hoverElements = document.querySelectorAll('a, button, .project-card, .stat-card, .skill-tag, .theme-toggle');
+        const hoverElements = document.querySelectorAll('a, button, .project-card, .stat-card, .skill-tag, .theme-toggle, input, textarea');
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 document.body.classList.add('hovering');
