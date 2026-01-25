@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan Parikh - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #1a1a2e;
+            line-height: 1.5;
+            font-size: 11px;
+        }
+
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in 0.6in;
+            background: #ffffff;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a2e;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 10.5px;
+            color: #4a5568;
+        }
+
+        .contact-info a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 8px;
+        }
+
+        /* Summary Section */
+        .summary-text {
+            font-size: 11px;
+            color: #374151;
+            text-align: justify;
+        }
+
+        /* Education Section */
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .edu-left h3 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .edu-left p {
+            font-size: 11px;
+            color: #4a5568;
+        }
+
+        .edu-right {
+            text-align: right;
+            font-size: 10.5px;
+            color: #4a5568;
+        }
+
+        .cgpa {
+            font-weight: 600;
+            color: #2563eb;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .skill-category h4 {
+            font-size: 11px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 3px;
+        }
+
+        .skill-category p {
+            font-size: 10.5px;
+            color: #4a5568;
+        }
+
+        /* Projects Section */
+        .project-item {
+            margin-bottom: 10px;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 3px;
+        }
+
+        .project-title {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .project-tech {
+            font-size: 10px;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .project-bullets {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-bullets li {
+            font-size: 10.5px;
+            color: #374151;
+            padding-left: 12px;
+            position: relative;
+            margin-bottom: 2px;
+        }
+
+        .project-bullets li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+        }
+
+        /* Achievements Section */
+        .achievement-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievement-list li {
+            font-size: 10.5px;
+            color: #374151;
+            padding-left: 12px;
+            position: relative;
+            margin-bottom: 3px;
+        }
+
+        .achievement-list li::before {
+            content: "★";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .resume-container {
+                padding: 0.4in 0.5in;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume-container">
+        <!-- Header -->
+        <header class="header">
+            <h1>ARYAN PARIKH</h1>
+            <div class="contact-info">
+                <span class="contact-item">📞 +91 8866778958</span>
+                <span class="contact-item">✉️ <a href="mailto:aryan81006@gmail.com">aryan81006@gmail.com</a></span>
+                <span class="contact-item">🔗 <a href="https://www.linkedin.com/in/aryan-parikh-548228316/"
+                        target="_blank">LinkedIn</a></span>
+                <span class="contact-item">💻 <a href="https://github.com/Aryan-B-Parikh"
+                        target="_blank">GitHub</a></span>
+            </div>
+        </header>
+
+        <!-- Summary -->
+        <section class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary-text">
+                Driven Computer Engineering student with a strong passion for Data Science, Full Stack Development, and
+                AI/ML.
+                Proficient in Python, data analysis, and building scalable web applications. Experienced in hackathons
+                and collaborative
+                team environments, with hands-on expertise in machine learning, data visualization, and end-to-end
+                project development.
+            </p>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <div class="edu-left">
+                    <h3>B.Tech in Computer Engineering</h3>
+                    <p>Chandubhai S. Patel Institute of Technology (CSPIT), CHARUSAT</p>
+                </div>
+                <div class="edu-right">
+                    <p>Expected Graduation: 2028</p>
+                    <p>CGPA: <span class="cgpa">7.998</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Programming Languages</h4>
+                    <p>Python, SQL, JavaScript, Java, C, C++, R (Beginner)</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Libraries & Frameworks</h4>
+                    <p>Pandas, NumPy, Scikit-learn, Matplotlib, React, Node.js, FastAPI, TensorFlow</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Tools & Databases</h4>
+                    <p>Jupyter Notebook, Git, VS Code, MongoDB, PostgreSQL, Firebase, Docker</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="section">
+            <h2 class="section-title">Projects</h2>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <span class="project-title">SmartShopper — Price & Review Analyzer</span>
+                    <span class="project-tech">React, FastAPI, MongoDB, Scikit-learn, Hugging Face</span>
+                </div>
+                <ul class="project-bullets">
+                    <li>Developed a full-stack e-commerce analytics platform with AI-powered sentiment analysis using
+                        DistilBERT/RoBERTa models</li>
+                    <li>Implemented multi-platform price comparison across Amazon, Flipkart, and Myntra using web
+                        scraping with Scrapy and BeautifulSoup</li>
+                    <li>Built JWT-based authentication system with role-based access control and personalized user
+                        recommendations</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <span class="project-title">Commuto — Real-Time Ride Sharing Platform</span>
+                    <span class="project-tech">React, Node.js, MongoDB, Socket.io, Google Maps API</span>
+                </div>
+                <ul class="project-bullets">
+                    <li>Built a full-stack ride-sharing application with real-time updates using Socket.io for live seat
+                        counts and fare calculations</li>
+                    <li>Integrated Google Maps API for live vehicle tracking and implemented secure OTP verification for
+                        ride starts</li>
+                    <li>Designed responsive glassmorphism UI with Tailwind CSS and deployed on Vercel (frontend) and
+                        Railway (backend)</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <span class="project-title">Carbon Footprint Calculator AI</span>
+                    <span class="project-tech">Python, Streamlit, OpenAI GPT-3.5, Matplotlib, Firebase</span>
+                </div>
+                <ul class="project-bullets">
+                    <li>Created an AI-powered carbon footprint calculator using Climatiq API for accurate CO₂ emission
+                        calculations</li>
+                    <li>Visualized emission breakdowns using Matplotlib pie charts and integrated OpenAI for
+                        personalized reduction suggestions</li>
+                    <li>Implemented data persistence with Firebase Realtime Database; built during Hackathon 2025 with
+                        Team ElevateX</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <span class="project-title">ReWear — Community Clothing Exchange Platform</span>
+                    <span class="project-tech">Python, Odoo, PostgreSQL</span>
+                </div>
+                <ul class="project-bullets">
+                    <li>Built a sustainable clothing reuse platform promoting circular economy during Odoo Hackathon
+                        2025</li>
+                    <li>Implemented backend workflows and ERP customizations using Odoo framework with PostgreSQL
+                        database</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Achievements -->
+        <section class="section">
+            <h2 class="section-title">Achievements & Activities</h2>
+            <ul class="achievement-list">
+                <li><strong>Hackathon 2025 Participant</strong> — Built Carbon Footprint Calculator AI with Team
+                    ElevateX</li>
+                <li><strong>Odoo Hackathon 2025</strong> — Developed ReWear platform with Bash-Scripters team</li>
+                <li><strong>Certifications:</strong> Git & GitHub (Coursera), Fundamentals of Data Science & Algorithms,
+                    Java Programming, PHP Development</li>
+                <li><strong>Open Source Contributor</strong> — Active GitHub profile with 11+ public repositories
+                    showcasing diverse projects</li>
+            </ul>
+        </section>
+    </div>
+</body>
+
+</html>
