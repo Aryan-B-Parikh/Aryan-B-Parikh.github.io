@@ -1,36 +1,66 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aryan Parikh | Computer Engineering Student @ CHARUSAT</title>
-    <meta name="description" content="Aryan Parikh - 2nd year Computer Engineering student at CHARUSAT. Building projects in Python, C++, and Web Development. Exploring Data Science and AI/ML.">
-    <meta name="keywords" content="Aryan Parikh, Computer Engineering, CHARUSAT, Python Developer, Web Developer, Data Science Student, Anand, Gujarat">
+    <meta name="description"
+        content="Aryan Parikh - 2nd year Computer Engineering student at CHARUSAT. Building projects in Python, C++, and Web Development. Exploring Data Science and AI/ML.">
+    <meta name="keywords"
+        content="Aryan Parikh, Computer Engineering, CHARUSAT, Python Developer, Web Developer, Data Science Student, Anand, Gujarat">
     <meta name="author" content="Aryan Parikh">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💻%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💻%3C/text%3E%3C/svg%3E">
     <link rel="canonical" href="https://aryan-b-parikh.github.io/">
     <meta name="theme-color" content="#4a6bff">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Aryan Parikh | Computer Engineering Student">
     <meta property="og:description" content="2nd year CS student building projects in Python, C++, and Web Development">
     <meta property="og:url" content="https://aryan-b-parikh.github.io">
     <meta property="og:image" content="https://avatars.githubusercontent.com/Aryan-B-Parikh">
-    
+    <meta property="og:site_name" content="Aryan Parikh Portfolio">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Aryan Parikh",
+      "url": "https://aryan-b-parikh.github.io",
+      "image": "https://avatars.githubusercontent.com/Aryan-B-Parikh",
+      "sameAs": [
+        "https://github.com/Aryan-B-Parikh",
+        "https://www.linkedin.com/in/aryan-parikh-548228316/"
+      ],
+      "jobTitle": "Computer Engineering Student",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "CHARUSAT"
+      },
+      "description": "2nd-year Consputer Engineering student passionate about Python, C++, and Web Development."
+    }
+    </script>
+
     <link rel="preload" href="assets/css/styles.css" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
+
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+
     <!-- Particles Background -->
     <div id="particles-js"></div>
 
     <!-- Theme Toggle -->
-    <div class="theme-toggle" id="themeToggle">
+    <div class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" role="button" tabindex="0">
         <i class="fas fa-moon"></i>
     </div>
 
@@ -46,10 +76,18 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#github">GitHub</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="hamburger">
+                <div class="nav-socials" style="display: flex; gap: 1rem; margin-left: 2rem;">
+                    <a href="https://github.com/Aryan-B-Parikh" target="_blank" aria-label="GitHub"
+                        style="color: var(--text); font-size: 1.2rem; transition: color 0.3s;"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/aryan-parikh-850983286" target="_blank" aria-label="LinkedIn"
+                        style="color: var(--text); font-size: 1.2rem; transition: color 0.3s;"><i
+                            class="fab fa-linkedin"></i></a>
+                    <!-- Add more social links here if needed -->
+                </div>
+                <div class="hamburger" aria-label="Mobile Menu" role="button" tabindex="0">
                     <i class="fas fa-bars"></i>
                 </div>
             </nav>
@@ -58,15 +96,34 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <!-- Aura Glow Effect -->
+        <div class="aura-glow"
+            style="top: -10%; left: -10%; background: radial-gradient(circle, rgba(74, 107, 255, 0.4) 0%, rgba(0, 0, 0, 0) 70%);">
+        </div>
+        <div class="aura-glow"
+            style="bottom: -10%; right: -10%; background: radial-gradient(circle, rgba(255, 107, 107, 0.2) 0%, rgba(0, 0, 0, 0) 70%); animation-delay: -5s;">
+        </div>
+
         <div class="container">
-            <div class="hero-content">
-                <h1>Hi, I'm <span>Aryan Parikh</span></h1>
-                <p>Computer Engineering Student | Building Projects in Python, C++, and Web Development</p>
-                <p class="hero-subtext" style="font-size: 1rem; margin-top: 0.5rem; color: var(--text-light);">2nd-year student at CHARUSAT passionate about solving real-world problems through code. Currently exploring Data Science, AI/ML, and full-stack development.</p>
-                <div class="hero-btns">
-                    <a href="#projects" class="btn">View My Work</a>
-                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
-                    <a href="documents/resume.pdf" download class="btn btn-outline" style="border-color: var(--accent); color: var(--accent);"><i class="fas fa-download"></i> Download Resume</a>
+            <div class="hero-content glass-panel"
+                style="padding: 3rem; border-radius: 20px; text-align: left; max-width: 900px; margin: 0 auto; position: relative; overflow: hidden;">
+                <h1 class="text-glow" style="font-size: 4rem; line-height: 1.1;">Hi, I'm <span
+                        style="color: var(--primary); text-shadow: 0 0 20px rgba(74, 107, 255, 0.4);">Aryan
+                        Parikh</span></h1>
+                <p style="font-size: 1.5rem; margin: 1.5rem 0; font-weight: 300;">I am a <span class="typing-text"
+                        style="color: var(--accent); font-weight: 600;"></span><span class="cursor-blink">|</span></p>
+                <p class="hero-subtext" style="font-size: 1.1rem; color: var(--text); opacity: 0.9; max-width: 600px;">
+                    2nd-year student at CHARUSAT crafting digital experiences. Exploring the intersection of Data
+                    Science, AI/ML, and Creative Web Development.
+                </p>
+                <div class="hero-btns" style="justify-content: flex-start; margin-top: 3rem;">
+                    <a href="#projects" class="btn" style="box-shadow: 0 0 20px rgba(74, 107, 255, 0.5);">View My
+                        Work</a>
+                    <a href="#contact" class="btn btn-outline" style="border-width: 2px;">Get In Touch</a>
+                    <a href="documents/resume.pdf" download class="btn btn-outline"
+                        style="border-color: var(--accent); color: var(--accent); display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
                 </div>
             </div>
         </div>
@@ -109,13 +166,22 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://avatars.githubusercontent.com/Aryan-B-Parikh" alt="Aryan Parikh" onerror="this.src='https://ui-avatars.com/api/?name=Aryan+Parikh&background=4a6bff&color=fff&size=400'">
+                    <img src="https://avatars.githubusercontent.com/Aryan-B-Parikh" alt="Aryan Parikh"
+                        onerror="this.src='https://ui-avatars.com/api/?name=Aryan+Parikh&background=4a6bff&color=fff&size=400'">
                 </div>
                 <div class="about-text">
                     <h3>Computer Engineering Student @ CHARUSAT</h3>
-                    <p><strong>Who I am:</strong> I'm a 2nd-year Computer Engineering student at CSPIT, CHARUSAT, with a strong foundation in Python, C++, and JavaScript. I enjoy breaking down complex problems and building practical solutions.</p>
-                    <p><strong>What I'm learning:</strong> Currently diving deep into Data Structures & Algorithms, Database Management Systems, and Object-Oriented Programming with Java. Outside the classroom, I'm exploring Machine Learning basics and building web applications to strengthen my full-stack skills.</p>
-                    <p><strong>What drives me:</strong> I'm drawn to the intersection of software and problem-solving—whether it's optimizing code, analyzing data patterns, or building tools that make tasks easier. My goal is to work on projects that create real impact while continuing to learn and grow as a developer.</p>
+                    <p><strong>Who I am:</strong> I'm a 2nd-year Computer Engineering student at CSPIT, CHARUSAT, with a
+                        strong foundation in Python, C++, and JavaScript. I enjoy breaking down complex problems and
+                        building practical solutions.</p>
+                    <p><strong>What I'm learning:</strong> Currently diving deep into Data Structures & Algorithms,
+                        Database Management Systems, and Object-Oriented Programming with Java. Outside the classroom,
+                        I'm exploring Machine Learning basics and building web applications to strengthen my full-stack
+                        skills.</p>
+                    <p><strong>What drives me:</strong> I'm drawn to the intersection of software and
+                        problem-solving—whether it's optimizing code, analyzing data patterns, or building tools that
+                        make tasks easier. My goal is to work on projects that create real impact while continuing to
+                        learn and grow as a developer.</p>
                     <div class="skills">
                         <span class="skill-tag">Python</span>
                         <span class="skill-tag">C++</span>
@@ -134,100 +200,71 @@
     <!-- Skills Section -->
     <section class="skills-section" id="skills">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            
+            <h2 class="section-title">Technical Expertise</h2>
+
             <div class="skills-grid">
                 <!-- Programming Languages -->
-                <div class="skill-category">
-                    <div class="category-icon">💻</div>
-                    <h3>Programming Languages</h3>
-                    <div class="skill-items-list">
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Python</span>
-                                <span class="skill-level">Advanced</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%; background: var(--primary);"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">C++</span>
-                                <span class="skill-level">Intermediate</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 75%; background: var(--accent);"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">JavaScript</span>
-                                <span class="skill-level">Intermediate</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 70%; background: #FFC107;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <span class="skill-name">Java</span>
-                                <span class="skill-level">Learning</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 60%; background: var(--success);"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Web Development -->
-                <div class="skill-category">
-                    <div class="category-icon">🌐</div>
-                    <h3>Web Development</h3>
+                <div class="skill-category glass-panel">
+                    <div class="category-icon" style="color: var(--warning);">⚡</div>
+                    <h3>Languages</h3>
                     <div class="skill-badges">
-                        <span class="skill-badge">HTML5</span>
-                        <span class="skill-badge">CSS3</span>
-                        <span class="skill-badge">Responsive Design</span>
-                        <span class="skill-badge">Git/GitHub</span>
-                        <span class="skill-badge">REST APIs</span>
+                        <span class="skill-badge"><i class="fab fa-python"></i> Python</span>
+                        <span class="skill-badge"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="skill-badge"><i class="fas fa-code"></i> C++</span>
+                        <span class="skill-badge"><i class="fab fa-java"></i> Java</span>
+                        <span class="skill-badge"><i class="fas fa-database"></i> SQL</span>
+                        <span class="skill-badge"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="skill-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
                     </div>
                 </div>
-                
-                <!-- Data Science & Tools -->
-                <div class="skill-category">
-                    <div class="category-icon">📊</div>
-                    <h3>Data Science & Tools</h3>
+
+                <!-- Web Technologies -->
+                <div class="skill-category glass-panel">
+                    <div class="category-icon" style="color: var(--primary);">🌐</div>
+                    <h3>Web Technologies</h3>
                     <div class="skill-badges">
-                        <span class="skill-badge">Pandas</span>
-                        <span class="skill-badge">NumPy</span>
-                        <span class="skill-badge">Matplotlib</span>
-                        <span class="skill-badge">MySQL</span>
-                        <span class="skill-badge">Data Analysis</span>
+                        <span class="skill-badge"><i class="fab fa-react"></i> React</span>
+                        <span class="skill-badge"><i class="fab fa-node-js"></i> Node.js</span>
+                        <span class="skill-badge"><i class="fas fa-wind"></i> Tailwind</span>
+                        <span class="skill-badge"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                        <span class="skill-badge"><i class="fas fa-server"></i> API Design</span>
                     </div>
                 </div>
-                
+
+                <!-- Tools & Platforms -->
+                <div class="skill-category glass-panel">
+                    <div class="category-icon" style="color: var(--accent);">🛠️</div>
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="skill-badge"><i class="fab fa-github"></i> GitHub</span>
+                        <span class="skill-badge"><i class="fas fa-terminal"></i> VS Code</span>
+                        <span class="skill-badge"><i class="fab fa-linux"></i> Linux</span>
+                        <span class="skill-badge"><i class="fas fa-cloud"></i> Postman</span>
+                    </div>
+                </div>
+
                 <!-- Core Concepts -->
-                <div class="skill-category">
-                    <div class="category-icon">🧠</div>
+                <div class="skill-category glass-panel">
+                    <div class="category-icon" style="color: var(--success);">🧠</div>
                     <h3>Core Concepts</h3>
                     <div class="skill-badges">
-                        <span class="skill-badge">Data Structures</span>
-                        <span class="skill-badge">Algorithms</span>
-                        <span class="skill-badge">OOP</span>
-                        <span class="skill-badge">DBMS</span>
-                        <span class="skill-badge">Problem Solving</span>
+                        <span class="skill-badge"><i class="fas fa-project-diagram"></i> Data Structures</span>
+                        <span class="skill-badge"><i class="fas fa-calculator"></i> Algorithms</span>
+                        <span class="skill-badge"><i class="fas fa-cubes"></i> OOP</span>
+                        <span class="skill-badge"><i class="fas fa-database"></i> DBMS</span>
+                        <span class="skill-badge"><i class="fas fa-network-wired"></i> CN</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Education & Timeline Section -->
-    <section class="education" id="education">
+    <!-- Education Section -->
+    <section class="education-section" id="education">
         <div class="container">
-            <h2 class="section-title">Education & Timeline</h2>
-            
+            <h2 class="section-title">Education & Journey</h2>
+
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="timeline-content">
@@ -235,109 +272,139 @@
                         <h3>Bachelor of Technology in Computer Science & Engineering</h3>
                         <p>Chandubhai S. Patel Institute of Technology (CHARUSAT), Changa</p>
                         <p><strong>Current CGPA:</strong> 7.998/10.0 (3rd Semester)</p>
-                        <p><strong>Key Coursework:</strong> Data Structures & Algorithms, Object-Oriented Programming (Java), Database Management Systems, Computer Networks, Software Engineering</p>
-                        <p><strong>What I'm learning:</strong> Building strong foundations in DSA, working on group projects for Software Engineering, and exploring MySQL for database applications. Actively participating in coding competitions and contributing to technical projects.</p>
+                        <p><strong>Key Coursework:</strong> Data Structures & Algorithms, Object-Oriented Programming
+                            (Java), Database Management Systems, Computer Networks, Software Engineering</p>
+                        <p><strong>What I'm learning:</strong> Building strong foundations in DSA, working on group
+                            projects for Software Engineering, and exploring MySQL for database applications. Actively
+                            participating in coding competitions and contributing to technical projects.</p>
                         <div class="timeline-actions">
-                            <a href="https://charusat.ac.in" target="_blank" class="timeline-btn">🏛️ Visit Institution</a>
+                            <a href="https://charusat.ac.in" target="_blank" class="timeline-btn">🏛️ Visit
+                                Institution</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="date">August 2024</span>
                         <h3>Python for Everybody Specialization</h3>
                         <p>University of Michigan via Coursera</p>
-                        <p>Completed comprehensive Python programming course covering data structures, web scraping, databases, and data visualization with hands-on projects.</p>
+                        <p>Completed comprehensive Python programming course covering data structures, web scraping,
+                            databases, and data visualization with hands-on projects.</p>
                         <div class="timeline-actions">
-                            <button class="timeline-btn" onclick="showCertificate('python_coursera')">🐍 Python Certificate</button>
-                            <button class="timeline-btn" onclick="showCertificate('python_projects')">💼 Course Projects</button>
-                            <a href="https://coursera.org/verify/specialization/ABC123XYZ" target="_blank" class="timeline-btn">✅ Verify Online</a>
+                            <button class="timeline-btn" onclick="showCertificate('python_coursera')">🐍 Python
+                                Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('python_projects')">💼 Course
+                                Projects</button>
+                            <a href="https://coursera.org/verify/specialization/ABC123XYZ" target="_blank"
+                                class="timeline-btn">✅ Verify Online</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="date">June 2024</span>
                         <h3>Web Development Fundamentals</h3>
                         <p>freeCodeCamp</p>
-                        <p>Earned certification in responsive web design, covering HTML5, CSS3, JavaScript ES6+, and modern web development practices.</p>
+                        <p>Earned certification in responsive web design, covering HTML5, CSS3, JavaScript ES6+, and
+                            modern web development practices.</p>
                         <div class="timeline-actions">
-                            <button class="timeline-btn" onclick="showCertificate('web_dev')">🌐 Web Dev Certificate</button>
-                            <button class="timeline-btn" onclick="showCertificate('web_projects')">🎨 Portfolio Projects</button>
-                            <a href="https://freecodecamp.org/certification/aryan-parikh/responsive-web-design" target="_blank" class="timeline-btn">🔗 View Online</a>
+                            <button class="timeline-btn" onclick="showCertificate('web_dev')">🌐 Web Dev
+                                Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('web_projects')">🎨 Portfolio
+                                Projects</button>
+                            <a href="https://freecodecamp.org/certification/aryan-parikh/responsive-web-design"
+                                target="_blank" class="timeline-btn">🔗 View Online</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="date">April 2024</span>
                         <h3>Data Science with Python</h3>
                         <p>IBM via edX</p>
-                        <p>Completed intensive data science course covering pandas, numpy, matplotlib, machine learning basics, and data analysis techniques.</p>
+                        <p>Completed intensive data science course covering pandas, numpy, matplotlib, machine learning
+                            basics, and data analysis techniques.</p>
                         <div class="timeline-actions">
-                            <button class="timeline-btn" onclick="showCertificate('data_science')">📊 Data Science Certificate</button>
-                            <button class="timeline-btn" onclick="showCertificate('ds_capstone')">🎯 Capstone Project</button>
-                            <a href="https://edx.org/certificate/data-science-python" target="_blank" class="timeline-btn">📜 Verify Certificate</a>
+                            <button class="timeline-btn" onclick="showCertificate('data_science')">📊 Data Science
+                                Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('ds_capstone')">🎯 Capstone
+                                Project</button>
+                            <a href="https://edx.org/certificate/data-science-python" target="_blank"
+                                class="timeline-btn">📜 Verify Certificate</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="date">September 2024</span>
                         <h3>Computer Science Fundamentals</h3>
                         <p>CS50x - Harvard University via edX</p>
-                        <p>Completed Harvard's renowned introduction to computer science course, covering algorithms, data structures, and multiple programming languages.</p>
+                        <p>Completed Harvard's renowned introduction to computer science course, covering algorithms,
+                            data structures, and multiple programming languages.</p>
                         <div class="timeline-actions">
                             <button class="timeline-btn" onclick="showCertificate('cs50')">🎓 CS50 Certificate</button>
-                            <button class="timeline-btn" onclick="showCertificate('cs50_projects')">💻 Final Projects</button>
-                            <a href="https://cs50.harvard.edu/certificates/abc123" target="_blank" class="timeline-btn">🏛️ Harvard Verify</a>
+                            <button class="timeline-btn" onclick="showCertificate('cs50_projects')">💻 Final
+                                Projects</button>
+                            <a href="https://cs50.harvard.edu/certificates/abc123" target="_blank"
+                                class="timeline-btn">🏛️ Harvard Verify</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="date">2022 - 2024</span>
                         <h3>Higher Secondary Certificate (CBSE) - 12th Grade</h3>
                         <p>Podar International School, Anand</p>
                         <p><strong>Percentage:</strong> 90.6% | <strong>Grade:</strong> A1</p>
-                        <p><strong>Stream:</strong> Science (Physics, Chemistry, Mathematics, Computer Science, English)</p>
-                        <p><strong>Subject Scores:</strong> Mathematics: 95/100 | Chemistry: 95/100 | English: 89/100 | Physics: 87/100 | Computer Science: 87/100</p>
-                        <p><strong>Highlights:</strong> Achieved 95% in both Mathematics and Chemistry, demonstrating strong analytical and scientific aptitude. Developed solid problem-solving skills through advanced coursework.</p>
+                        <p><strong>Stream:</strong> Science (Physics, Chemistry, Mathematics, Computer Science, English)
+                        </p>
+                        <p><strong>Subject Scores:</strong> Mathematics: 95/100 | Chemistry: 95/100 | English: 89/100 |
+                            Physics: 87/100 | Computer Science: 87/100</p>
+                        <p><strong>Highlights:</strong> Achieved 95% in both Mathematics and Chemistry, demonstrating
+                            strong analytical and scientific aptitude. Developed solid problem-solving skills through
+                            advanced coursework.</p>
                         <div class="timeline-actions">
                             <a href="https://podar.org" target="_blank" class="timeline-btn">🏫 Visit School</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item left">
                     <div class="timeline-content">
                         <span class="date">November 2022</span>
                         <h3>Mathematics Olympiad Winner</h3>
                         <p>Regional Mathematics Olympiad - Gujarat State</p>
-                        <p>Secured 1st position in Regional Mathematics Olympiad, demonstrating exceptional problem-solving skills and mathematical reasoning abilities.</p>
+                        <p>Secured 1st position in Regional Mathematics Olympiad, demonstrating exceptional
+                            problem-solving skills and mathematical reasoning abilities.</p>
                         <div class="timeline-actions">
-                            <button class="timeline-btn" onclick="showCertificate('olympiad')">🥇 Winner Certificate</button>
-                            <button class="timeline-btn" onclick="showCertificate('olympiad_problems')">🧮 Problem Solutions</button>
-                            <button class="timeline-btn" onclick="showTestimonial('math_teacher')">👨‍🏫 Teacher's Testimonial</button>
+                            <button class="timeline-btn" onclick="showCertificate('olympiad')">🥇 Winner
+                                Certificate</button>
+                            <button class="timeline-btn" onclick="showCertificate('olympiad_problems')">🧮 Problem
+                                Solutions</button>
+                            <button class="timeline-btn" onclick="showTestimonial('math_teacher')">👨‍🏫 Teacher's
+                                Testimonial</button>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item right">
                     <div class="timeline-content">
                         <span class="date">2020 - 2022</span>
                         <h3>Secondary Education (10th Grade)</h3>
                         <p>Podar International School, Anand</p>
-                        <p>Completed my secondary education with a strong foundation in mathematics and science, achieving 89% in the board examinations.</p>
+                        <p>Completed my secondary education with a strong foundation in mathematics and science,
+                            achieving 89% in the board examinations.</p>
                         <div class="timeline-actions">
                             <button class="timeline-btn" onclick="showCertificate('ssc')">🏆 SSC Certificate</button>
-                            <button class="timeline-btn" onclick="showCertificate('ssc_marksheet')">📊 Mark Sheet</button>
-                            <button class="timeline-btn" onclick="showTestimonial('principal')">💬 Principal's Note</button>
+                            <button class="timeline-btn" onclick="showCertificate('ssc_marksheet')">📊 Mark
+                                Sheet</button>
+                            <button class="timeline-btn" onclick="showTestimonial('principal')">💬 Principal's
+                                Note</button>
                         </div>
                     </div>
                 </div>
@@ -352,63 +419,87 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800" alt="To-Do List App" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800"
+                            alt="To-Do List App" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3>To-Do List Application</h3>
-                        <p class="project-problem"><strong>🎯 Problem:</strong> Keeping track of daily tasks across different priorities without a centralized system.</p>
-                        <p class="project-solution"><strong>✨ Solution:</strong> Created a Python task manager with priority levels, due dates, categories, and a clean Tkinter GUI for easy task management.</p>
+                        <p class="project-problem"><strong>🎯 Problem:</strong> Keeping track of daily tasks across
+                            different priorities without a centralized system.</p>
+                        <p class="project-solution"><strong>✨ Solution:</strong> Created a Python task manager with
+                            priority levels, due dates, categories, and a clean Tkinter GUI for easy task management.
+                        </p>
                         <div class="project-tags">
                             <span>Python</span>
                             <span>Tkinter</span>
                             <span>File Handling</span>
                             <span>GUI</span>
                         </div>
-                        <p class="project-learning" style="font-size: 0.9rem; margin-top: 10px; color: var(--text-light);"><strong>💡 Learned:</strong> First hands-on experience with GUI programming using Tkinter. Learned how to handle user events, implement data persistence, and create an intuitive interface.</p>
+                        <p class="project-learning"
+                            style="font-size: 0.9rem; margin-top: 10px; color: var(--text-light);"><strong>💡
+                                Learned:</strong> First hands-on experience with GUI programming using Tkinter. Learned
+                            how to handle user events, implement data persistence, and create an intuitive interface.
+                        </p>
                         <div class="project-links">
-                            <a href="https://github.com/Aryan-B-Parikh/Python/blob/main/Projects/To_Do_List_App.py" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                            <a href="https://github.com/Aryan-B-Parikh/Python/blob/main/Projects/To_Do_List_App.py"
+                                target="_blank"><i class="fab fa-github"></i> View Code</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800" alt="Hospital Management" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800"
+                            alt="Hospital Management" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3>Hospital Management System</h3>
-                        <p class="project-problem"><strong>🎯 Problem:</strong> Manual patient record management is time-consuming and error-prone in healthcare facilities.</p>
-                        <p class="project-solution"><strong>✨ Solution:</strong> Built a Python-based system to digitize patient records, schedule appointments, and track medical history with data persistence.</p>
+                        <p class="project-problem"><strong>🎯 Problem:</strong> Manual patient record management is
+                            time-consuming and error-prone in healthcare facilities.</p>
+                        <p class="project-solution"><strong>✨ Solution:</strong> Built a Python-based system to digitize
+                            patient records, schedule appointments, and track medical history with data persistence.</p>
                         <div class="project-tags">
                             <span>Python</span>
                             <span>OOP</span>
                             <span>File I/O</span>
                             <span>Data Structures</span>
                         </div>
-                        <p class="project-learning" style="font-size: 0.9rem; margin-top: 10px; color: var(--text-light);"><strong>💡 Learned:</strong> Designed class hierarchies for patient and doctor entities, implemented efficient search algorithms, and handled file operations for data storage.</p>
+                        <p class="project-learning"
+                            style="font-size: 0.9rem; margin-top: 10px; color: var(--text-light);"><strong>💡
+                                Learned:</strong> Designed class hierarchies for patient and doctor entities,
+                            implemented efficient search algorithms, and handled file operations for data storage.</p>
                         <div class="project-links">
-                            <a href="https://github.com/Aryan-B-Parikh/Python/blob/main/Projects/hospital_management.py" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                            <a href="https://github.com/Aryan-B-Parikh/Python/blob/main/Projects/hospital_management.py"
+                                target="_blank"><i class="fab fa-github"></i> View Code</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=800" alt="Quiz App" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=800" alt="Quiz App"
+                            loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3>Interactive Quiz Application</h3>
-                        <p class="project-problem"><strong>🎯 Problem:</strong> Students need an engaging way to test their knowledge across multiple subjects with instant feedback.</p>
-                        <p class="project-solution"><strong>✨ Solution:</strong> Developed a C++ quiz system with multiple-choice questions, instant feedback, score tracking, and category-based quizzes.</p>
+                        <p class="project-problem"><strong>🎯 Problem:</strong> Students need an engaging way to test
+                            their knowledge across multiple subjects with instant feedback.</p>
+                        <p class="project-solution"><strong>✨ Solution:</strong> Developed a C++ quiz system with
+                            multiple-choice questions, instant feedback, score tracking, and category-based quizzes.</p>
                         <div class="project-tags">
                             <span>C++</span>
                             <span>Arrays</span>
                             <span>Functions</span>
                             <span>File I/O</span>
                         </div>
-                        <p class="project-learning" style="font-size: 0.9rem; margin-top: 10px; color: var(--text-light);"><strong>💡 Learned:</strong> Practiced array manipulation, function modularization, and file operations in C++. This project improved my understanding of program flow control and user interaction design.</p>
+                        <p class="project-learning"
+                            style="font-size: 0.9rem; margin-top: 10px; color: var(--text-light);"><strong>💡
+                                Learned:</strong> Practiced array manipulation, function modularization, and file
+                            operations in C++. This project improved my understanding of program flow control and user
+                            interaction design.</p>
                         <div class="project-links">
-                            <a href="https://github.com/Aryan-B-Parikh/Cpp/blob/main/Projects/quiz.cpp" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                            <a href="https://github.com/Aryan-B-Parikh/Cpp/blob/main/Projects/quiz.cpp"
+                                target="_blank"><i class="fab fa-github"></i> View Code</a>
                         </div>
                     </div>
                 </div>
@@ -416,55 +507,7 @@
         </div>
     </section>
 
-    <!-- GitHub Stats Section -->
-    <section class="github-stats" id="github">
-        <div class="container">
-            <h2 class="section-title">GitHub Activity</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; color: var(--text-light);">I code regularly to improve my problem-solving skills and explore new technologies. Below is a snapshot of my GitHub activity, including my most-used languages and contribution patterns.</p>
-            <div class="github-stats-container">
-                <div class="github-header">
-                    <div class="github-profile">
-                        <div class="github-avatar">
-                            <img src="https://avatars.githubusercontent.com/Aryan-B-Parikh" alt="Aryan Parikh" onerror="this.src='https://ui-avatars.com/api/?name=Aryan+Parikh&background=4a6bff&color=fff&size=200'">
-                        </div>
-                        <div class="github-info">
-                            <h3>@Aryan-B-Parikh</h3>
-                            <p>2nd-year Computer Engineering student building projects in Python, C++, and JavaScript</p>
-                            <p style="font-size: 0.9rem; margin-top: 0.5rem;"><strong>Focus areas:</strong> Data Structures, Web Development, Data Science</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/Aryan-B-Parikh" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/aryan-parikh-548228316/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="github-stats-grid">
-                    <div class="stat-box">
-                        <h4>Most Used Languages</h4>
-                        <div class="languages-chart">
-                            <canvas id="languagesChart"></canvas>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-box">
-                        <h4>GitHub Activity</h4>
-                        <div class="stat-value">Active</div>
-                        <div class="stat-label">Regular Contributions</div>
-                        <div class="stat-value">4</div>
-                        <div class="stat-label">Languages Used</div>
-                        <div class="stat-value">Python & C++</div>
-                        <div class="stat-label">Primary Focus</div>
-                    </div>
-                </div>
-                
-                <!-- GitHub Activity Graph -->
-                <div class="github-activity-graph">
-                    <img src="https://github-readme-activity-graph.vercel.app/graph?username=Aryan-B-Parikh&theme=github-compact&bg_color=000000&color=00BFFF&line=2ECC71&point=FFFFFF&hide_border=true" width="100%" />
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- GitHub Stats Section Removed -->
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -473,8 +516,14 @@
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>Let's Connect!</h3>
-                    <p>I'm always open to discussing new projects, internship opportunities, or collaboration on interesting problems. Whether you have a question about my work or just want to chat about tech—feel free to reach out!</p>
-                    <p style="background: rgba(74, 107, 255, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary); margin: 20px 0;"><strong>🎯 Looking for:</strong> Internship opportunities in Software Development, Data Science, or Full-Stack Development for Summer 2025</p>
+                    <p>I'm always open to discussing new projects, internship opportunities, or collaboration on
+                        interesting problems. Whether you have a question about my work or just want to chat about
+                        tech—feel free to reach out!</p>
+                    <p
+                        style="background: rgba(74, 107, 255, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary); margin: 20px 0;">
+                        <strong>🎯 Looking for:</strong> Internship opportunities in Software Development, Data Science,
+                        or Full-Stack Development for Summer 2025
+                    </p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
@@ -499,17 +548,21 @@
                         </div>
                     </div>
                     <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="documents/resume.pdf" download class="btn" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <a href="documents/resume.pdf" download class="btn"
+                            style="display: inline-flex; align-items: center; gap: 8px;">
                             <i class="fas fa-download"></i> Download Resume
                         </a>
-                        <a href="https://www.linkedin.com/in/aryan-parikh-548228316/" target="_blank" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <a href="https://www.linkedin.com/in/aryan-parikh-548228316/" target="_blank"
+                            class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
                             <i class="fab fa-linkedin"></i> LinkedIn Profile
                         </a>
                     </div>
-                    <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">Prefer email? Drop me a message using the form, and I'll get back to you within 24 hours!</p>
+                    <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">Prefer email? Drop me a
+                        message using the form, and I'll get back to you within 24 hours!</p>
                     <div class="social-links">
                         <a href="https://github.com/Aryan-B-Parikh" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/aryan-parikh-548228316/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/in/aryan-parikh-548228316/" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
                         <a href="mailto:aryan81006@gmail.com"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
@@ -571,4 +624,5 @@
 
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>

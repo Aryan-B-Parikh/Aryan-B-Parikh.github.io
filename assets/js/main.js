@@ -2,20 +2,20 @@
 let languagesChart;
 
 // Initialize particles.js when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Only initialize particles.js if the element exists
     if (document.getElementById('particles-js')) {
         particlesJS('particles-js', {
             "particles": {
                 "number": {
-                    "value": 80,
+                    "value": 100,
                     "density": {
                         "enable": true,
                         "value_area": 800
                     }
                 },
                 "color": {
-                    "value": "#4a6bff"
+                    "value": "#ffffff"
                 },
                 "shape": {
                     "type": "circle",
@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 "opacity": {
                     "value": 0.5,
-                    "random": false,
+                    "random": true,
                     "anim": {
-                        "enable": false,
+                        "enable": true,
                         "speed": 1,
                         "opacity_min": 0.1,
                         "sync": false
@@ -51,12 +51,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     "enable": true,
                     "distance": 150,
                     "color": "#4a6bff",
-                    "opacity": 0.4,
-                    "width": 1
+                    "opacity": 0.6,
+                    "width": 1.5
                 },
                 "move": {
                     "enable": true,
-                    "speed": 2,
+                    "speed": 1.5,
                     "direction": "none",
                     "random": false,
                     "straight": false,
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 "modes": {
                     "grab": {
-                        "distance": 140,
+                        "distance": 180,
                         "line_linked": {
                             "opacity": 1
                         }
@@ -115,12 +115,90 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    
+
+    // Custom Cursor Logic
+    const cursor = document.getElementById('cursor');
+
+    if (cursor && window.matchMedia("(pointer: fine)").matches) {
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+
+        window.addEventListener('mousemove', function (e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            // Smooth follow with Lerp
+            cursorX += (mouseX - cursorX) * 0.2;
+            cursorY += (mouseY - cursorY) * 0.2;
+
+            cursor.style.left = `${cursorX}px`;
+            cursor.style.top = `${cursorY}px`;
+
+            requestAnimationFrame(animateCursor);
+        }
+
+        animateCursor();
+
+        // Hover effect for links and buttons
+        const hoverElements = document.querySelectorAll('a, button, .project-card, .stat-card, .skill-tag, .theme-toggle, input, textarea');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovering');
+            });
+        });
+    }
+
+    // Typing Animation Logic
+    const typingText = document.querySelector('.typing-text');
+    if (typingText) {
+        const words = ["Computer Engineering Student", "Python Developer", "Web Developer", "Data Science Enthusiast"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentWord = words[wordIndex];
+
+            if (isDeleting) {
+                typingText.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50; // Faster deleting speed
+            } else {
+                typingText.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100; // Normal typing speed
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end of word
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500; // Pause before new word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start typing
+        setTimeout(type, 1000);
+    }
+
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-        
+
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
@@ -147,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Interactive skill tags
     const skillTags = document.querySelectorAll('.skill-tag');
     skillTags.forEach(tag => {
-        tag.addEventListener('click', function() {
+        tag.addEventListener('click', function () {
             this.classList.add('pulse');
             setTimeout(() => {
                 this.classList.remove('pulse');
@@ -160,13 +238,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Interactive project cards
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
-        card.addEventListener('click', function(e) {
+        card.addEventListener('click', function (e) {
             if (e.target.tagName === 'A' || e.target.tagName === 'I') return;
             const projectTitle = this.querySelector('h3').textContent;
             showProjectDetails(projectTitle, this);
         });
 
-        card.addEventListener('mousemove', function(e) {
+        card.addEventListener('mousemove', function (e) {
             const rect = this.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -177,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = `translateY(-15px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
 
-        card.addEventListener('mouseleave', function() {
+        card.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
         });
     });
@@ -225,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     tooltip: {
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return `${context.dataset.label}: ${context.parsed.y}%`;
                             }
                         }
@@ -240,15 +318,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         const inputs = contactForm.querySelectorAll('input, textarea');
         inputs.forEach(input => {
-            input.addEventListener('input', function() {
+            input.addEventListener('input', function () {
                 validateField(this);
             });
-            input.addEventListener('blur', function() {
+            input.addEventListener('blur', function () {
                 validateField(this);
             });
         });
 
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const subject = document.getElementById('subject').value.trim();
@@ -312,7 +390,7 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            
+
             if (entry.target.classList.contains('stat-card')) {
                 const statNumber = entry.target.querySelector('.stat-number');
                 if (statNumber && !statNumber.dataset.animated) {
@@ -372,7 +450,7 @@ function showSkillInfo(skillName) {
         <p>${skillInfo[skillName] || 'Proficient in ' + skillName}</p>
         <button onclick="this.parentElement.remove()" style="margin-top: 15px; padding: 8px 16px; background: var(--primary); color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>
     `;
-    
+
     document.body.appendChild(tooltip);
     setTimeout(() => {
         if (tooltip.parentElement) {
@@ -421,7 +499,7 @@ function showProjectDetails(projectTitle, cardElement) {
         z-index: 2000;
         animation: fadeIn 0.3s ease;
     `;
-    
+
     modal.innerHTML = `
         <div style="background: var(--card-bg); padding: 40px; border-radius: 20px; max-width: 600px; max-height: 80vh; overflow-y: auto; position: relative;">
             <button onclick="this.closest('.project-modal').remove()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text);">×</button>
@@ -438,9 +516,9 @@ function showProjectDetails(projectTitle, cardElement) {
             <a href="${project.github}" target="_blank" style="display: inline-block; background: var(--gradient); color: white; padding: 12px 30px; border-radius: 25px; text-decoration: none; font-weight: 600;">View Source Code</a>
         </div>
     `;
-    
+
     document.body.appendChild(modal);
-    modal.addEventListener('click', function(e) {
+    modal.addEventListener('click', function (e) {
         if (e.target === modal) {
             modal.remove();
         }
@@ -508,7 +586,7 @@ function validateField(field) {
     const fieldName = field.name;
     clearFieldError(field.id);
 
-    switch(fieldName) {
+    switch (fieldName) {
         case 'name':
             if (value.length > 0 && value.length < 2) {
                 showFieldError(field.id, 'Name must be at least 2 characters');
@@ -551,15 +629,15 @@ function showFieldError(fieldId, message) {
     if (!field) return;
     const formGroup = field.closest('.form-group');
     if (!formGroup) return;
-    
+
     formGroup.classList.remove('success');
     formGroup.classList.add('error');
-    
+
     const existingError = formGroup.querySelector('.error-message');
     if (existingError) {
         existingError.remove();
     }
-    
+
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.style.cssText = `
@@ -569,7 +647,7 @@ function showFieldError(fieldId, message) {
     `;
     errorDiv.textContent = message;
     formGroup.appendChild(errorDiv);
-    
+
     field.style.borderColor = '#e74c3c';
     field.style.boxShadow = '0 0 0 3px rgba(231, 76, 60, 0.1)';
 }
@@ -579,7 +657,7 @@ function showFieldSuccess(fieldId) {
     if (!field) return;
     const formGroup = field.closest('.form-group');
     if (!formGroup) return;
-    
+
     formGroup.classList.remove('error');
     formGroup.classList.add('success');
     field.style.borderColor = '#27ae60';
@@ -591,7 +669,7 @@ function clearFieldError(fieldId) {
     if (!field) return;
     const formGroup = field.closest('.form-group');
     if (!formGroup) return;
-    
+
     formGroup.classList.remove('error', 'success');
     const errorMessage = formGroup.querySelector('.error-message');
     if (errorMessage) {
@@ -602,7 +680,7 @@ function clearFieldError(fieldId) {
 }
 
 // Update chart colors when theme changes
-document.body.addEventListener('transitionend', function(e) {
+document.body.addEventListener('transitionend', function (e) {
     if (e.propertyName === 'background-color' && languagesChart) {
         setTimeout(() => {
             if (languagesChart) {

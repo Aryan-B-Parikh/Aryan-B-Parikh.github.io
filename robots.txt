@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aryan-b-parikh.github.io/sitemap.xml
